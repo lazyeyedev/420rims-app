@@ -2,6 +2,7 @@ const Listing = require('../models/Listing');
 const Dealer = require('../models/Dealer');
 const Enquiry = require('../models/Enquiry');
 const { cloudinary } = require('../utils/cloudinaryUpload');
+const { sendEnquiryNotification } = require('../utils/emailService');
 
 // GET /api/listings  (public)
 const getListings = async (req, res) => {
@@ -269,6 +270,29 @@ const submitEnquiry = async (req, res) => {
   });
 
   await Listing.findByIdAndUpdate(req.params.id, { $inc: { enquiryCount: 1 } });
+
+  // Fire-and-forget email notification to dealer
+  (async () => {
+    try {
+      const dealerWithUser = await Dealer.findById(listing.dealer).populate('user', 'email name');
+      if (dealerWithUser?.user?.email) {
+        const senderName  = req.user ? req.user.name  : guestName;
+        const senderEmail = req.user ? req.user.email : guestEmail;
+        const senderPhone = req.user ? req.user.phone : guestPhone;
+        await sendEnquiryNotification({
+          dealerEmail:  dealerWithUser.user.email,
+          dealerName:   dealerWithUser.businessName,
+          listingTitle: listing.title,
+          senderName,
+          senderEmail,
+          senderPhone,
+          message,
+          type: type || 'general',
+          listingUrl: `${process.env.CLIENT_URL}/listings/${listing._id}`,
+        });
+      }
+    } catch (_) {}
+  })();
 
   res.status(201).json(enquiry);
 };

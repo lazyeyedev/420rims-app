@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Dealer = require('../models/Dealer');
 const generateToken = require('../utils/generateToken');
+const { sendWelcomeEmail } = require('../utils/emailService');
 
 // POST /api/auth/register
 const registerUser = async (req, res) => {
@@ -18,6 +19,9 @@ const registerUser = async (req, res) => {
   }
 
   const user = await User.create({ name, email, password, role: 'user' });
+
+  // Fire-and-forget welcome email
+  sendWelcomeEmail({ email: user.email, name: user.name }).catch(() => {});
 
   const token = generateToken({ id: user._id, role: user.role });
 
@@ -59,6 +63,9 @@ const registerDealer = async (req, res) => {
     phone,
     whatsapp: whatsapp || '',
   });
+
+  // Fire-and-forget welcome email
+  sendWelcomeEmail({ email: user.email, name: user.name }).catch(() => {});
 
   const token = generateToken({ id: user._id, role: user.role });
 
