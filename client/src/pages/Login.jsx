@@ -21,68 +21,56 @@ const s = {
     border: '1px solid #2a2a2a', borderRadius: 12,
     padding: '2.5rem 2rem', boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
   },
-  logo: {
-    textAlign: 'center', marginBottom: '2rem',
-  },
-  logoText: {
-    fontSize: '1.8rem', fontWeight: 800, letterSpacing: 1,
-    color: '#c9a84c', fontFamily: 'system-ui, sans-serif',
-  },
-  logoSub: { color: '#888', fontSize: '0.8rem', marginTop: 2 },
-  title: { color: '#f0f0f0', fontSize: '1.25rem', fontWeight: 600, marginBottom: '1.5rem', textAlign: 'center' },
-  group: { marginBottom: '1.2rem' },
-  label: { display: 'block', color: '#aaa', fontSize: '0.85rem', marginBottom: 6, fontWeight: 500 },
+  logo:     { textAlign: 'center', marginBottom: '2rem' },
+  logoText: { fontSize: '1.8rem', fontWeight: 800, letterSpacing: 1, color: '#c9a84c' },
+  logoSub:  { color: '#888', fontSize: '0.8rem', marginTop: 2 },
+  title:    { color: '#f0f0f0', fontSize: '1.25rem', fontWeight: 600,
+    marginBottom: '1.5rem', textAlign: 'center' },
+  group:    { marginBottom: '1.2rem' },
+  label:    { display: 'block', color: '#aaa', fontSize: '0.85rem',
+    marginBottom: 6, fontWeight: 500 },
   inputWrap: { position: 'relative' },
   input: {
     width: '100%', background: '#1a1a1a', border: '1px solid #2a2a2a',
     borderRadius: 6, padding: '0.7rem 1rem', color: '#f0f0f0',
-    fontSize: '0.95rem', outline: 'none', transition: 'border 0.2s',
-    boxSizing: 'border-box',
+    fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box',
   },
   inputPassword: {
     width: '100%', background: '#1a1a1a', border: '1px solid #2a2a2a',
     borderRadius: 6, padding: '0.7rem 3rem 0.7rem 1rem', color: '#f0f0f0',
-    fontSize: '0.95rem', outline: 'none', transition: 'border 0.2s',
-    boxSizing: 'border-box',
+    fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box',
   },
   toggle: {
     position: 'absolute', right: 12, top: '50%', transform: 'translateY(-50%)',
     background: 'none', border: 'none', color: '#888', fontSize: '0.8rem',
     cursor: 'pointer', padding: 0,
   },
-  error: { color: '#e05252', fontSize: '0.78rem', marginTop: 4 },
+  error:  { color: '#e05252', fontSize: '0.78rem', marginTop: 4 },
   btn: {
     width: '100%', background: '#c9a84c', color: '#0d0d0d', border: 'none',
     borderRadius: 6, padding: '0.8rem', fontWeight: 700, fontSize: '1rem',
     marginTop: '0.5rem', cursor: 'pointer', display: 'flex',
     alignItems: 'center', justifyContent: 'center', gap: 8,
-    transition: 'background 0.2s',
   },
-  btnDisabled: { opacity: 0.6, cursor: 'not-allowed' },
-  links: { textAlign: 'center', marginTop: '1.5rem', color: '#888', fontSize: '0.85rem' },
-  link: { color: '#c9a84c', textDecoration: 'none', fontWeight: 600 },
+  links:   { textAlign: 'center', marginTop: '1.5rem', color: '#888', fontSize: '0.85rem' },
   divider: { color: '#444', margin: '0 0.5rem' },
 };
 
 const focusStyle = `
-  input:focus, select:focus, textarea:focus {
-    border-color: #c9a84c !important;
-    box-shadow: 0 0 0 2px rgba(201,168,76,0.15);
-  }
+  input:focus { border-color: #c9a84c !important; box-shadow: 0 0 0 2px rgba(201,168,76,0.15); }
+  @keyframes spin { to { transform: rotate(360deg); } }
 `;
 
 const Spinner = () => (
-  <span style={{
-    width: 16, height: 16, border: '2px solid #0d0d0d44',
+  <span style={{ width: 16, height: 16, border: '2px solid #0d0d0d44',
     borderTop: '2px solid #0d0d0d', borderRadius: '50%',
-    display: 'inline-block', animation: 'spin 0.7s linear infinite',
-  }} />
+    display: 'inline-block', animation: 'spin 0.7s linear infinite' }} />
 );
 
 export default function Login() {
   const [showPw, setShowPw] = useState(false);
-  const { login } = useAuth();
-  const navigate  = useNavigate();
+  const { login, logout } = useAuth();
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
     resolver: yupResolver(schema),
@@ -91,7 +79,14 @@ export default function Login() {
   const onSubmit = async ({ email, password }) => {
     try {
       const user = await login(email, password);
-      if (user.role === 'admin')  return navigate('/admin/dashboard');
+
+      // Block admins from using the public login
+      if (user.role === 'admin') {
+        await logout();
+        toast.error('Use /admin/login to access the admin panel');
+        return;
+      }
+
       if (user.role === 'dealer') return navigate('/dealer/dashboard');
       navigate('/');
     } catch (err) {
@@ -101,7 +96,7 @@ export default function Login() {
 
   return (
     <div style={s.page}>
-      <style>{focusStyle}{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+      <style>{focusStyle}</style>
       <div style={s.card}>
         <div style={s.logo}>
           <div style={s.logoText}>420RIMS</div>
@@ -129,16 +124,17 @@ export default function Login() {
             {errors.password && <div style={s.error}>{errors.password.message}</div>}
           </div>
 
-          <button type="submit" style={{ ...s.btn, ...(isSubmitting ? s.btnDisabled : {}) }}
+          <button type="submit"
+            style={{ ...s.btn, ...(isSubmitting ? { opacity: 0.6, cursor: 'not-allowed' } : {}) }}
             disabled={isSubmitting}>
             {isSubmitting ? <><Spinner /> Signing in…</> : 'Sign In'}
           </button>
         </form>
 
         <div style={s.links}>
-          <Link to="/register" style={s.link}>Create account</Link>
+          <Link to="/register" style={{ color: '#c9a84c', fontWeight: 600 }}>Create account</Link>
           <span style={s.divider}>·</span>
-          <Link to="/register/dealer" style={s.link}>Register as Dealer</Link>
+          <Link to="/register/dealer" style={{ color: '#c9a84c', fontWeight: 600 }}>Register as Dealer</Link>
         </div>
       </div>
     </div>

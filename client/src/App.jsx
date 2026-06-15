@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute, { AdminProtectedRoute } from './components/ProtectedRoute';
 
 import Home                from './pages/Home';
 import Search              from './pages/Search';
@@ -21,6 +21,7 @@ import DealerProfile       from './pages/dealer/DealerProfile';
 import UserProfile         from './pages/user/UserProfile';
 import UserEnquiries       from './pages/user/UserEnquiries';
 
+import AdminLogin          from './pages/admin/AdminLogin';
 import AdminDashboard      from './pages/admin/AdminDashboard';
 import AdminUsers          from './pages/admin/AdminUsers';
 import AdminDealers        from './pages/admin/AdminDealers';
@@ -55,6 +56,9 @@ function App() {
           <Route path="/register"        element={<Register />} />
           <Route path="/register/dealer" element={<RegisterDealer />} />
 
+          {/* Admin login — public but isolated */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+
           {/* Protected — any authenticated user */}
           <Route element={<ProtectedRoute />}>
             <Route path="/profile"           element={<UserProfile />} />
@@ -70,8 +74,8 @@ function App() {
             <Route path="/dealer/profile"           element={<DealerProfile />} />
           </Route>
 
-          {/* Protected — admin only */}
-          <Route element={<ProtectedRoute requiredRole="admin" />}>
+          {/* Protected — admin only, redirects to /admin/login */}
+          <Route element={<AdminProtectedRoute />}>
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/users"     element={<AdminUsers />} />
             <Route path="/admin/dealers"   element={<AdminDealers />} />
