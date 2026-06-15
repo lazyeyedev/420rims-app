@@ -146,6 +146,11 @@ export default function DealerListings() {
                             opacity: deleting===l._id ? 0.5 : 1 }}>
                           {deleting===l._id ? '…' : 'Delete'}
                         </button>
+                        <button onClick={() => navigate(`/dealer/boost?listingId=${l._id}`)}
+                          style={{ background:'#1a1400', border:'1px solid #c9a84c44', color:'#c9a84c',
+                            borderRadius:5, padding:'4px 12px', fontSize:'0.78rem', cursor:'pointer' }}>
+                          Boost
+                        </button>
                       </td>
                     </tr>
                   );
