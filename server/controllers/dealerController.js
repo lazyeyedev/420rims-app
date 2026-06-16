@@ -3,7 +3,8 @@ const Listing = require('../models/Listing');
 const Enquiry = require('../models/Enquiry');
 const { cloudinary } = require('../utils/cloudinaryUpload');
 const multer = require('multer');
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const multerStorageCloudinary = require('multer-storage-cloudinary');
+const CloudinaryStorage = multerStorageCloudinary.CloudinaryStorage || multerStorageCloudinary;
 
 // Separate multer instance for dealer profile images
 const dealerStorage = new CloudinaryStorage({
