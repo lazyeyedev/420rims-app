@@ -38,7 +38,7 @@ export default function DealerBoostSuccess() {
     <DealerLayout>
       <div style={{ maxWidth:520, margin:'0 auto', textAlign:'center', padding:'3rem 1rem' }}>
         <div style={{ fontSize:'3.5rem', marginBottom:'1rem' }}>{icon}</div>
-        <h1 style={{ color:'#f0f0f0', fontSize:'1.5rem', fontWeight:800, marginBottom:'0.75rem' }}>
+        <h1 style={{ color:'#ececec', fontSize:'1.5rem', fontWeight:800, marginBottom:'0.75rem' }}>
           {title}
         </h1>
 
@@ -63,7 +63,7 @@ export default function DealerBoostSuccess() {
                     textTransform:'uppercase', letterSpacing:0.5, marginBottom:3 }}>
                     {label}
                   </div>
-                  <div style={{ color:'#f0f0f0', fontSize:'0.88rem', fontWeight:600,
+                  <div style={{ color:'#ececec', fontSize:'0.88rem', fontWeight:600,
                     textTransform:'capitalize' }}>
                     {value}
                   </div>
@@ -84,7 +84,7 @@ export default function DealerBoostSuccess() {
         )}
 
         <Link to="/dealer/listings"
-          style={{ display:'inline-block', background:'#c9a84c', color:'#0d0d0d',
+          style={{ display:'inline-block', background:'#c41e2a', color:'#0d0d0d',
             padding:'0.75rem 2rem', borderRadius:6, fontWeight:700, fontSize:'0.9rem',
             textDecoration:'none' }}>
           Back to My Listings

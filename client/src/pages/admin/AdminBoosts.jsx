@@ -6,10 +6,10 @@ import axiosInstance from '../../api/axiosInstance';
 const STATUS_STYLE = {
   active:  { bg:'#52c07a22', color:'#52c07a' },
   expired: { bg:'#33333322', color:'#555'     },
-  pending: { bg:'#c9a84c22', color:'#c9a84c'  },
+  pending: { bg:'#c41e2a22', color:'#c41e2a'  },
 };
 
-const BOOST_TYPE_COLOR = { featured:'#c9a84c', top:'#52a0e0', banner:'#c052e0' };
+const BOOST_TYPE_COLOR = { featured:'#c41e2a', top:'#52a0e0', banner:'#c052e0' };
 
 const fmt = (n) => `GHS ${Number(n).toLocaleString()}`;
 
@@ -40,7 +40,7 @@ export default function AdminBoosts() {
     <AdminLayout>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
         <div>
-          <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>Active Boosts</h1>
+          <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>Active Boosts</h1>
           <div style={{ color:'#555', fontSize:'0.8rem', marginTop:3 }}>{total} active</div>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default function AdminBoosts() {
                         onMouseEnter={e=>e.currentTarget.style.background='#181818'}
                         onMouseLeave={e=>e.currentTarget.style.background='transparent'}>
                         <td style={{ padding:'0.8rem 1rem' }}>
-                          <div style={{ color:'#f0f0f0', fontSize:'0.82rem', fontWeight:600,
+                          <div style={{ color:'#ececec', fontSize:'0.82rem', fontWeight:600,
                             maxWidth:200, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
                             {b.listing?.title || '—'}
                           </div>
@@ -94,7 +94,7 @@ export default function AdminBoosts() {
                             {b.boostType}
                           </span>
                         </td>
-                        <td style={{ padding:'0.8rem 1rem', color:'#c9a84c', fontWeight:700,
+                        <td style={{ padding:'0.8rem 1rem', color:'#c41e2a', fontWeight:700,
                           fontSize:'0.82rem', whiteSpace:'nowrap' }}>
                           {fmt(b.amountPaid)}
                         </td>
@@ -132,8 +132,8 @@ export default function AdminBoosts() {
           {Array.from({length:totalPages},(_,i)=>i+1).map(p=>(
             <button key={p} onClick={()=>setPage(p)}
               style={{ width:36,height:36,borderRadius:6,border:'1px solid',
-                borderColor:p===page?'#c9a84c':'#2a2a2a',
-                background:p===page?'#c9a84c':'#1a1a1a',
+                borderColor:p===page?'#c41e2a':'#2a2a2a',
+                background:p===page?'#c41e2a':'#1a1a1a',
                 color:p===page?'#0d0d0d':'#ccc',cursor:'pointer',fontSize:'0.85rem' }}>
               {p}
             </button>

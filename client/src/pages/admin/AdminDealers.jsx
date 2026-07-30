@@ -9,7 +9,7 @@ const FILTERS = [
   { label:'Approved',  value:'true'  },
 ];
 
-const TIER_COLOR = { basic:'#666', pro:'#c9a84c', premium:'#e0c070' };
+const TIER_COLOR = { basic:'#666', pro:'#c41e2a', premium:'#e8a0a6' };
 
 const Badge = ({ label, bg, color }) => (
   <span style={{ background:bg, color, fontSize:'0.7rem', padding:'2px 8px',
@@ -65,13 +65,13 @@ export default function AdminDealers() {
     <AdminLayout>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem', flexWrap:'wrap', gap:'1rem' }}>
         <div>
-          <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>Dealers</h1>
+          <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>Dealers</h1>
           <div style={{ color:'#555', fontSize:'0.8rem', marginTop:3 }}>{total} total</div>
         </div>
         <div style={{ display:'flex', gap:'0.5rem' }}>
           {FILTERS.map(f => (
             <button key={f.value} onClick={() => { setFilter(f.value); setPage(1); }}
-              style={{ background: filter===f.value ? '#c9a84c' : '#1a1a1a',
+              style={{ background: filter===f.value ? '#c41e2a' : '#1a1a1a',
                 color: filter===f.value ? '#0d0d0d' : '#888',
                 border:'1px solid #2a2a2a', borderRadius:6,
                 padding:'0.45rem 0.9rem', fontSize:'0.82rem', cursor:'pointer',
@@ -109,14 +109,14 @@ export default function AdminDealers() {
                                 objectFit:'cover', border:'1px solid #2a2a2a', flexShrink:0 }} />
                             : <div style={{ width:36, height:36, borderRadius:'50%', background:'#1e1e1e',
                                 display:'flex', alignItems:'center', justifyContent:'center',
-                                color:'#c9a84c', fontWeight:800, fontSize:'0.85rem',
+                                color:'#c41e2a', fontWeight:800, fontSize:'0.85rem',
                                 border:'1px solid #2a2a2a', flexShrink:0 }}>
                                 {d.businessName?.[0]}
                               </div>}
                           <div>
-                            <div style={{ color:'#f0f0f0', fontSize:'0.85rem', fontWeight:600 }}>
+                            <div style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600 }}>
                               {d.businessName}
-                              {d.isVerified && <span style={{ color:'#c9a84c', marginLeft:5, fontSize:'0.72rem' }}>✓</span>}
+                              {d.isVerified && <span style={{ color:'#c41e2a', marginLeft:5, fontSize:'0.72rem' }}>✓</span>}
                             </div>
                             <div style={{ color:'#555', fontSize:'0.72rem' }}>{d.businessAddress}</div>
                           </div>
@@ -136,14 +136,14 @@ export default function AdminDealers() {
                       <td style={{ padding:'0.8rem 1rem' }}>
                         {d.isApproved
                           ? <Badge label="Approved"  bg="#52c07a22" color="#52c07a" />
-                          : <Badge label="Pending"   bg="#c9a84c22" color="#c9a84c" />}
+                          : <Badge label="Pending"   bg="#c41e2a22" color="#c41e2a" />}
                       </td>
                       <td style={{ padding:'0.8rem 1rem' }}>
                         <div style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap' }}>
                           {!d.isApproved && (
                             <ActionBtn label={acting[d._id]==='approve'?'…':'Approve'}
                               onClick={() => act(d._id,'approve','Dealer approved',{ isApproved:true })}
-                              bg="#c9a84c" color="#0d0d0d" disabled={!!acting[d._id]} />
+                              bg="#c41e2a" color="#0d0d0d" disabled={!!acting[d._id]} />
                           )}
                           {d.isApproved && (
                             <ActionBtn label={acting[d._id]==='suspend'?'…':'Suspend'}
@@ -172,8 +172,8 @@ export default function AdminDealers() {
           {Array.from({ length:totalPages },(_,i)=>i+1).map(p => (
             <button key={p} onClick={() => setPage(p)}
               style={{ width:36, height:36, borderRadius:6, border:'1px solid',
-                borderColor: p===page?'#c9a84c':'#2a2a2a',
-                background:  p===page?'#c9a84c':'#1a1a1a',
+                borderColor: p===page?'#c41e2a':'#2a2a2a',
+                background:  p===page?'#c41e2a':'#1a1a1a',
                 color:       p===page?'#0d0d0d':'#ccc',
                 cursor:'pointer', fontSize:'0.85rem' }}>
               {p}

@@ -29,11 +29,11 @@ const schema = yup.object({
 });
 
 const label  = { display:'block', color:'#888', fontSize:'0.78rem', marginBottom:5, fontWeight:600, textTransform:'uppercase', letterSpacing:0.5 };
-const inp    = { width:'100%', background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6, padding:'0.65rem 0.9rem', color:'#f0f0f0', fontSize:'0.88rem', outline:'none', boxSizing:'border-box' };
+const inp    = { width:'100%', background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6, padding:'0.65rem 0.9rem', color:'#ececec', fontSize:'0.88rem', outline:'none', boxSizing:'border-box' };
 const sel    = { ...inp, cursor:'pointer' };
 const errMsg = { color:'#e05252', fontSize:'0.75rem', marginTop:4 };
 const sect   = { background:'#141414', border:'1px solid #2a2a2a', borderRadius:10, padding:'1.25rem', marginBottom:'1.25rem' };
-const sectH  = { color:'#c9a84c', fontSize:'0.75rem', fontWeight:700, letterSpacing:1, textTransform:'uppercase', marginBottom:'1rem', paddingBottom:'0.5rem', borderBottom:'1px solid #1e1e1e' };
+const sectH  = { color:'#c41e2a', fontSize:'0.75rem', fontWeight:700, letterSpacing:1, textTransform:'uppercase', marginBottom:'1rem', paddingBottom:'0.5rem', borderBottom:'1px solid #1e1e1e' };
 const row2   = { display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' };
 
 export default function ListingForm({ defaultValues = {}, existingImages = [], onSubmit, submitLabel, loading }) {
@@ -79,7 +79,7 @@ export default function ListingForm({ defaultValues = {}, existingImages = [], o
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} noValidate>
-      <style>{`input:focus,select:focus,textarea:focus{border-color:#c9a84c!important;box-shadow:0 0 0 2px rgba(201,168,76,0.12)} select option{background:#1a1a1a;color:#f0f0f0}`}</style>
+      <style>{`input:focus,select:focus,textarea:focus{border-color:#c41e2a!important;box-shadow:0 0 0 2px rgba(196,30,42,0.12)} select option{background:#1a1a1a;color:#ececec}`}</style>
 
       {/* Section 1 — Basic Info */}
       <div style={sect}>
@@ -246,11 +246,11 @@ export default function ListingForm({ defaultValues = {}, existingImages = [], o
           onDragLeave={()=>setDragging(false)}
           onDrop={onDrop}
           onClick={() => document.getElementById('img-upload').click()}
-          style={{ border:`2px dashed ${dragging?'#c9a84c':'#2a2a2a'}`, borderRadius:8,
+          style={{ border:`2px dashed ${dragging?'#c41e2a':'#2a2a2a'}`, borderRadius:8,
             padding:'2rem', textAlign:'center', cursor:'pointer', background: dragging?'#1a1a1a':'transparent',
             transition:'all 0.2s', marginBottom: previews.length ? '1rem' : 0 }}>
           <div style={{ color:'#555', fontSize:'0.88rem' }}>
-            <span style={{ color:'#c9a84c', fontWeight:600 }}>Click to upload</span> or drag & drop
+            <span style={{ color:'#c41e2a', fontWeight:600 }}>Click to upload</span> or drag & drop
           </div>
           <div style={{ color:'#444', fontSize:'0.75rem', marginTop:4 }}>JPEG, PNG, WebP · Max 5MB each</div>
           <input id="img-upload" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden
@@ -279,7 +279,7 @@ export default function ListingForm({ defaultValues = {}, existingImages = [], o
       </div>
 
       <button type="submit" disabled={loading}
-        style={{ width:'100%', background:'#c9a84c', color:'#0d0d0d', border:'none',
+        style={{ width:'100%', background:'#c41e2a', color:'#0d0d0d', border:'none',
           borderRadius:8, padding:'0.9rem', fontWeight:800, fontSize:'1rem',
           cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.6 : 1 }}>
         {loading ? 'Submitting…' : submitLabel}

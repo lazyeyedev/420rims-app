@@ -8,7 +8,7 @@ const CONDITIONS = ['new','foreign used','locally used'];
 
 const sel = {
   background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6,
-  padding:'0.7rem 1rem', color:'#f0f0f0', fontSize:'0.88rem',
+  padding:'0.7rem 1rem', color:'#ececec', fontSize:'0.88rem',
   outline:'none', cursor:'pointer', flex:1, minWidth:130,
 };
 
@@ -47,7 +47,7 @@ export default function SearchBar({ initialValues = {} }) {
         {CONDITIONS.map(c=><option key={c} value={c}>{c}</option>)}
       </select>
       <button onClick={handleSearch}
-        style={{ background:'#c9a84c', color:'#0d0d0d', border:'none', borderRadius:6,
+        style={{ background:'#c41e2a', color:'#0d0d0d', border:'none', borderRadius:6,
           padding:'0.7rem 1.5rem', fontWeight:700, fontSize:'0.9rem', cursor:'pointer',
           whiteSpace:'nowrap', flexShrink:0 }}>
         Search Cars

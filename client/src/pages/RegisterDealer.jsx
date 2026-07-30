@@ -28,7 +28,7 @@ const schema = yup.object({
 
 const base = {
   width: '100%', background: '#1a1a1a', border: '1px solid #2a2a2a',
-  borderRadius: 6, padding: '0.7rem 1rem', color: '#f0f0f0',
+  borderRadius: 6, padding: '0.7rem 1rem', color: '#ececec',
   fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box',
 };
 
@@ -43,11 +43,11 @@ const s = {
     padding: '2.5rem 2rem', boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
   },
   logo:     { textAlign: 'center', marginBottom: '2rem' },
-  logoText: { fontSize: '1.8rem', fontWeight: 800, letterSpacing: 1, color: '#c9a84c' },
+  logoText: { fontSize: '1.8rem', fontWeight: 800, letterSpacing: 1, color: '#c41e2a' },
   logoSub:  { color: '#888', fontSize: '0.8rem', marginTop: 2 },
-  title:    { color: '#f0f0f0', fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.4rem', textAlign: 'center' },
+  title:    { color: '#ececec', fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.4rem', textAlign: 'center' },
   subtitle: { color: '#888', fontSize: '0.82rem', textAlign: 'center', marginBottom: '1.8rem' },
-  divLabel: { color: '#c9a84c', fontSize: '0.72rem', fontWeight: 700, letterSpacing: 1,
+  divLabel: { color: '#c41e2a', fontSize: '0.72rem', fontWeight: 700, letterSpacing: 1,
     textTransform: 'uppercase', marginBottom: '1rem', marginTop: '1.4rem',
     borderBottom: '1px solid #2a2a2a', paddingBottom: '0.4rem' },
   group:  { marginBottom: '1.1rem' },
@@ -64,7 +64,7 @@ const s = {
   },
   error: { color: '#e05252', fontSize: '0.78rem', marginTop: 4 },
   btn: {
-    width: '100%', background: '#c9a84c', color: '#0d0d0d', border: 'none',
+    width: '100%', background: '#c41e2a', color: '#0d0d0d', border: 'none',
     borderRadius: 6, padding: '0.85rem', fontWeight: 700, fontSize: '1rem',
     marginTop: '0.75rem', cursor: 'pointer', display: 'flex',
     alignItems: 'center', justifyContent: 'center', gap: 8,
@@ -74,10 +74,10 @@ const s = {
 
 const focusStyle = `
   input:focus, select:focus, textarea:focus {
-    border-color: #c9a84c !important;
-    box-shadow: 0 0 0 2px rgba(201,168,76,0.15);
+    border-color: #c41e2a !important;
+    box-shadow: 0 0 0 2px rgba(196,30,42,0.15);
   }
-  select option { background: #1a1a1a; color: #f0f0f0; }
+  select option { background: #1a1a1a; color: #ececec; }
 `;
 
 const Spinner = () => (
@@ -205,7 +205,7 @@ export default function RegisterDealer() {
 
         <div style={s.links}>
           Already have an account?{' '}
-          <Link to="/login" style={{ color: '#c9a84c', fontWeight: 600 }}>Sign in</Link>
+          <Link to="/login" style={{ color: '#c41e2a', fontWeight: 600 }}>Sign in</Link>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
-const cloudinary = require('cloudinary').v2;
+const cloudinaryLib = require('cloudinary');
+const cloudinary = cloudinaryLib.v2;
 const multerStorageCloudinary = require('multer-storage-cloudinary');
 const CloudinaryStorage = multerStorageCloudinary.CloudinaryStorage || multerStorageCloudinary;
 const multer = require('multer');
@@ -10,7 +11,7 @@ cloudinary.config({
 });
 
 const storage = new CloudinaryStorage({
-  cloudinary,
+  cloudinary: cloudinaryLib,
   params: {
     folder: '420rims/listings',
     allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],

@@ -6,7 +6,7 @@ const Spinner = () => (
   <div style={{ display:'flex', justifyContent:'center', alignItems:'center',
     height:'100vh', backgroundColor:'#0a0a0a' }}>
     <div style={{ width:48, height:48, border:'4px solid #2a2a2a',
-      borderTop:'4px solid #c9a84c', borderRadius:'50%',
+      borderTop:'4px solid #c41e2a', borderRadius:'50%',
       animation:'spin 0.8s linear infinite' }} />
     <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
   </div>

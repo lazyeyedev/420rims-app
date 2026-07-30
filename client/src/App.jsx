@@ -29,7 +29,7 @@ import AdminListings       from './pages/admin/AdminListings';
 import AdminBoosts         from './pages/admin/AdminBoosts';
 
 const NotFound = () => (
-  <div style={{ color: '#c9a84c', textAlign: 'center', padding: '4rem',
+  <div style={{ color: '#c41e2a', textAlign: 'center', padding: '4rem',
     background: '#0a0a0a', minHeight: '100vh' }}>
     <h1 style={{ fontSize: '4rem' }}>404</h1>
     <p>Page not found.</p>

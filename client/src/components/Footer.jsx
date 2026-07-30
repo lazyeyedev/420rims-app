@@ -7,20 +7,20 @@ export default function Footer() {
         <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'2rem', marginBottom:'2.5rem' }}>
 
           <div>
-            <div style={{ fontSize:'1.4rem', fontWeight:800, color:'#c9a84c', marginBottom:'0.75rem' }}>420RIMS</div>
+            <div style={{ fontSize:'1.4rem', fontWeight:800, color:'#c41e2a', marginBottom:'0.75rem' }}>420RIMS</div>
             <p style={{ color:'#666', fontSize:'0.85rem', lineHeight:1.7 }}>
               Ghana's premier marketplace for buying and selling quality vehicles. Trusted by dealers across all sixteen regions.
             </p>
           </div>
 
           <div>
-            <div style={{ color:'#c9a84c', fontWeight:700, fontSize:'0.85rem', letterSpacing:1,
+            <div style={{ color:'#c41e2a', fontWeight:700, fontSize:'0.85rem', letterSpacing:1,
               textTransform:'uppercase', marginBottom:'1rem' }}>Quick Links</div>
             <div style={{ display:'flex', flexDirection:'column', gap:'0.5rem' }}>
               {[['Browse Cars','/listings'],['Sell Your Car','/register/dealer'],
                 ['Login','/login'],['Register','/register']].map(([label,to]) => (
                 <Link key={to} to={to} style={{ color:'#888', fontSize:'0.85rem', textDecoration:'none' }}
-                  onMouseEnter={e=>e.target.style.color='#c9a84c'}
+                  onMouseEnter={e=>e.target.style.color='#c41e2a'}
                   onMouseLeave={e=>e.target.style.color='#888'}>
                   {label}
                 </Link>
@@ -29,7 +29,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <div style={{ color:'#c9a84c', fontWeight:700, fontSize:'0.85rem', letterSpacing:1,
+            <div style={{ color:'#c41e2a', fontWeight:700, fontSize:'0.85rem', letterSpacing:1,
               textTransform:'uppercase', marginBottom:'1rem' }}>Contact</div>
             <div style={{ color:'#888', fontSize:'0.85rem', lineHeight:1.9 }}>
               <div>📍 Accra, Ghana</div>
@@ -46,7 +46,7 @@ export default function Footer() {
             © 2026 420Rims. All rights reserved.
           </span>
           <span style={{ color:'#444', fontSize:'0.8rem' }}>
-            A <span style={{ color:'#c9a84c' }}>TechSphere</span> / <span style={{ color:'#c9a84c' }}>Sevinity Holdings</span> product · Accra, Ghana
+            A <span style={{ color:'#c41e2a' }}>TechSphere</span> / <span style={{ color:'#c41e2a' }}>Sevinity Holdings</span> product · Accra, Ghana
           </span>
         </div>
       </div>

@@ -45,7 +45,7 @@ export default function DealerEditListing() {
   return (
     <DealerLayout>
       <div style={{ maxWidth:760, margin:'0 auto' }}>
-        <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700, marginBottom:'0.4rem' }}>
+        <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700, marginBottom:'0.4rem' }}>
           Edit Listing
         </h1>
         <p style={{ color:'#666', fontSize:'0.85rem', marginBottom:'1.5rem' }}>

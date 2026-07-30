@@ -8,7 +8,7 @@ const BODY_TYPES   = ['sedan','suv','pickup','hatchback','coupe','van','bus','co
 const label = { display:'block', color:'#888', fontSize:'0.78rem', marginBottom:5,
   fontWeight:600, textTransform:'uppercase', letterSpacing:0.5 };
 const inp = { width:'100%', background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6,
-  padding:'0.55rem 0.75rem', color:'#f0f0f0', fontSize:'0.85rem', outline:'none', boxSizing:'border-box' };
+  padding:'0.55rem 0.75rem', color:'#ececec', fontSize:'0.85rem', outline:'none', boxSizing:'border-box' };
 const sel = { ...inp, cursor:'pointer' };
 
 export default function FilterPanel({ filters, onChange, onClear }) {
@@ -17,7 +17,7 @@ export default function FilterPanel({ filters, onChange, onClear }) {
   return (
     <div style={{ background:'#141414', border:'1px solid #2a2a2a', borderRadius:10, padding:'1.25rem' }}>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.25rem' }}>
-        <span style={{ color:'#f0f0f0', fontWeight:700, fontSize:'0.9rem' }}>Filters</span>
+        <span style={{ color:'#ececec', fontWeight:700, fontSize:'0.9rem' }}>Filters</span>
         <button onClick={onClear} style={{ background:'none', border:'none', color:'#666',
           fontSize:'0.78rem', cursor:'pointer', textDecoration:'underline' }}>
           Clear all

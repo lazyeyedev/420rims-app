@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const GOLD = '#c9a84c';
+const GOLD = '#c41e2a';
 
 export default function Navbar() {
   const { user, isDealer, isAdmin, logout } = useAuth();
@@ -66,7 +66,7 @@ export default function Navbar() {
               <button onClick={() => setDropOpen(p=>!p)}
                 style={{ background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:20,
                   padding:'0.3rem 0.75rem 0.3rem 0.4rem', display:'flex', alignItems:'center',
-                  gap:8, cursor:'pointer', color:'#f0f0f0', fontSize:'0.85rem' }}>
+                  gap:8, cursor:'pointer', color:'#ececec', fontSize:'0.85rem' }}>
                 <span style={{ width:28, height:28, borderRadius:'50%', background:'#2a2a2a',
                   display:'flex', alignItems:'center', justifyContent:'center',
                   fontSize:'0.75rem', color:GOLD, fontWeight:700 }}>

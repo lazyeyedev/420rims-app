@@ -7,7 +7,7 @@ import axiosInstance from '../../api/axiosInstance';
 const StatCard = ({ label, value, accent, loading }) => (
   <div style={{ background:'#141414', border:'1px solid #2a2a2a', borderRadius:10,
     padding:'1.2rem 1.4rem', flex:1, minWidth:120 }}>
-    <div style={{ color: accent ? '#c9a84c' : '#f0f0f0', fontSize:'1.8rem',
+    <div style={{ color: accent ? '#c41e2a' : '#ececec', fontSize:'1.8rem',
       fontWeight:900, lineHeight:1, marginBottom:6 }}>
       {loading ? <span style={{ color:'#2a2a2a' }}>—</span> : (value ?? 0).toLocaleString()}
     </div>
@@ -66,7 +66,7 @@ export default function AdminDashboard() {
   return (
     <AdminLayout>
       <div style={{ maxWidth:1100 }}>
-        <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700, marginBottom:'1.5rem' }}>
+        <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700, marginBottom:'1.5rem' }}>
           Dashboard
         </h1>
 
@@ -88,10 +88,10 @@ export default function AdminDashboard() {
           <div style={{ background:'#141414', border:'1px solid #2a2a2a', borderRadius:10, overflow:'hidden' }}>
             <div style={{ padding:'0.9rem 1.25rem', borderBottom:'1px solid #1e1e1e',
               display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-              <span style={{ color:'#f0f0f0', fontWeight:700, fontSize:'0.88rem' }}>
+              <span style={{ color:'#ececec', fontWeight:700, fontSize:'0.88rem' }}>
                 Pending Dealers
               </span>
-              <Link to="/admin/dealers?approved=false" style={{ color:'#c9a84c', fontSize:'0.78rem' }}>
+              <Link to="/admin/dealers?approved=false" style={{ color:'#c41e2a', fontSize:'0.78rem' }}>
                 View all
               </Link>
             </div>
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
                 <div key={d._id} style={{ padding:'0.8rem 1.25rem', borderBottom:'1px solid #1a1a1a',
                   display:'flex', justifyContent:'space-between', alignItems:'center', gap:'1rem' }}>
                   <div style={{ minWidth:0 }}>
-                    <div style={{ color:'#f0f0f0', fontSize:'0.85rem', fontWeight:600,
+                    <div style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600,
                       overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
                       {d.businessName}
                     </div>
@@ -113,7 +113,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                   <button onClick={() => approveDealer(d._id)} disabled={approving[d._id]}
-                    style={{ background:'#c9a84c', color:'#0d0d0d', border:'none', borderRadius:5,
+                    style={{ background:'#c41e2a', color:'#0d0d0d', border:'none', borderRadius:5,
                       padding:'4px 12px', fontSize:'0.78rem', fontWeight:700, cursor:'pointer',
                       opacity: approving[d._id] ? 0.5 : 1, flexShrink:0 }}>
                     {approving[d._id] ? '…' : 'Approve'}
@@ -126,10 +126,10 @@ export default function AdminDashboard() {
           <div style={{ background:'#141414', border:'1px solid #2a2a2a', borderRadius:10, overflow:'hidden' }}>
             <div style={{ padding:'0.9rem 1.25rem', borderBottom:'1px solid #1e1e1e',
               display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-              <span style={{ color:'#f0f0f0', fontWeight:700, fontSize:'0.88rem' }}>
+              <span style={{ color:'#ececec', fontWeight:700, fontSize:'0.88rem' }}>
                 Pending Listings
               </span>
-              <Link to="/admin/listings?approved=false" style={{ color:'#c9a84c', fontSize:'0.78rem' }}>
+              <Link to="/admin/listings?approved=false" style={{ color:'#c41e2a', fontSize:'0.78rem' }}>
                 View all
               </Link>
             </div>
@@ -142,7 +142,7 @@ export default function AdminDashboard() {
                 <div key={l._id} style={{ padding:'0.8rem 1.25rem', borderBottom:'1px solid #1a1a1a',
                   display:'flex', justifyContent:'space-between', alignItems:'center', gap:'1rem' }}>
                   <div style={{ minWidth:0 }}>
-                    <div style={{ color:'#f0f0f0', fontSize:'0.85rem', fontWeight:600,
+                    <div style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600,
                       overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
                       {l.title}
                     </div>
@@ -151,7 +151,7 @@ export default function AdminDashboard() {
                     </div>
                   </div>
                   <button onClick={() => approveListing(l._id)} disabled={approving[l._id]}
-                    style={{ background:'#c9a84c', color:'#0d0d0d', border:'none', borderRadius:5,
+                    style={{ background:'#c41e2a', color:'#0d0d0d', border:'none', borderRadius:5,
                       padding:'4px 12px', fontSize:'0.78rem', fontWeight:700, cursor:'pointer',
                       opacity: approving[l._id] ? 0.5 : 1, flexShrink:0 }}>
                     {approving[l._id] ? '…' : 'Approve'}
@@ -171,9 +171,9 @@ export default function AdminDashboard() {
                   border:'1px solid #2a2a2a', borderRadius:6, padding:'0.55rem 0.9rem',
                   color:'#ccc', fontSize:'0.84rem', textDecoration:'none',
                   transition:'border-color 0.15s' }}
-                onMouseEnter={e=>e.currentTarget.style.borderColor='#c9a84c44'}
+                onMouseEnter={e=>e.currentTarget.style.borderColor='#c41e2a44'}
                 onMouseLeave={e=>e.currentTarget.style.borderColor='#2a2a2a'}>
-                <span style={{ color:'#c9a84c' }}>{icon}</span> {label}
+                <span style={{ color:'#c41e2a' }}>{icon}</span> {label}
               </Link>
             ))}
           </div>

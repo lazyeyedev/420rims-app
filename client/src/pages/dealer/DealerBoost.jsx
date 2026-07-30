@@ -67,15 +67,15 @@ export default function DealerBoost() {
 
   const s = {
     card:   { background:'#141414', border:'1px solid #2a2a2a', borderRadius:10, padding:'1.25rem', marginBottom:'1.25rem' },
-    sectH:  { color:'#c9a84c', fontSize:'0.75rem', fontWeight:700, letterSpacing:1, textTransform:'uppercase', marginBottom:'1rem', paddingBottom:'0.5rem', borderBottom:'1px solid #1e1e1e' },
+    sectH:  { color:'#c41e2a', fontSize:'0.75rem', fontWeight:700, letterSpacing:1, textTransform:'uppercase', marginBottom:'1rem', paddingBottom:'0.5rem', borderBottom:'1px solid #1e1e1e' },
     option: (selected) => ({
-      border: `1px solid ${selected ? '#c9a84c' : '#2a2a2a'}`,
-      background: selected ? 'rgba(201,168,76,0.08)' : '#1a1a1a',
+      border: `1px solid ${selected ? '#c41e2a' : '#2a2a2a'}`,
+      background: selected ? 'rgba(196,30,42,0.08)' : '#1a1a1a',
       borderRadius:8, padding:'1rem', cursor:'pointer', transition:'all 0.15s',
     }),
     durBtn: (selected) => ({
-      flex:1, padding:'0.65rem', borderRadius:6, border:`1px solid ${selected ? '#c9a84c' : '#2a2a2a'}`,
-      background: selected ? '#c9a84c' : '#1a1a1a',
+      flex:1, padding:'0.65rem', borderRadius:6, border:`1px solid ${selected ? '#c41e2a' : '#2a2a2a'}`,
+      background: selected ? '#c41e2a' : '#1a1a1a',
       color: selected ? '#0d0d0d' : '#888',
       fontWeight: selected ? 700 : 400, cursor:'pointer', fontSize:'0.9rem',
     }),
@@ -90,7 +90,7 @@ export default function DealerBoost() {
   return (
     <DealerLayout>
       <div style={{ maxWidth:640, margin:'0 auto' }}>
-        <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700, marginBottom:'0.4rem' }}>
+        <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700, marginBottom:'0.4rem' }}>
           Boost Listing
         </h1>
         <p style={{ color:'#555', fontSize:'0.85rem', marginBottom:'1.75rem' }}>
@@ -105,7 +105,7 @@ export default function DealerBoost() {
               <div key={type} onClick={() => setBoostType(type)} style={s.option(boostType === type)}>
                 <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                   <div>
-                    <div style={{ color:'#f0f0f0', fontWeight:700, fontSize:'0.92rem', marginBottom:3 }}>
+                    <div style={{ color:'#ececec', fontWeight:700, fontSize:'0.92rem', marginBottom:3 }}>
                       {info.label}
                     </div>
                     <div style={{ color:'#666', fontSize:'0.8rem', lineHeight:1.5 }}>
@@ -113,7 +113,7 @@ export default function DealerBoost() {
                     </div>
                   </div>
                   {pricing && (
-                    <div style={{ color:'#c9a84c', fontWeight:800, fontSize:'0.9rem',
+                    <div style={{ color:'#c41e2a', fontWeight:800, fontSize:'0.9rem',
                       marginLeft:'1rem', flexShrink:0 }}>
                       from GHS {pricing[type][7]}
                     </div>
@@ -137,18 +137,18 @@ export default function DealerBoost() {
         </div>
 
         {/* Summary */}
-        <div style={{ ...s.card, borderColor:'#c9a84c33', background:'#1a1700' }}>
+        <div style={{ ...s.card, borderColor:'#c41e2a33', background:'#1a1700' }}>
           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
             <div>
               <div style={{ color:'#888', fontSize:'0.78rem', marginBottom:4 }}>
                 {BOOST_INFO[boostType]?.label} · {duration} days
               </div>
-              <div style={{ color:'#c9a84c', fontSize:'1.6rem', fontWeight:900 }}>
+              <div style={{ color:'#c41e2a', fontSize:'1.6rem', fontWeight:900 }}>
                 GHS {price.toLocaleString()}
               </div>
             </div>
             <button onClick={handleProceed} disabled={submitting}
-              style={{ background:'#c9a84c', color:'#0d0d0d', border:'none', borderRadius:8,
+              style={{ background:'#c41e2a', color:'#0d0d0d', border:'none', borderRadius:8,
                 padding:'0.85rem 1.75rem', fontWeight:800, fontSize:'0.95rem',
                 cursor: submitting ? 'not-allowed' : 'pointer',
                 opacity: submitting ? 0.6 : 1 }}>

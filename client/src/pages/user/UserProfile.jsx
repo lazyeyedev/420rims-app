@@ -6,10 +6,10 @@ import Footer from '../../components/Footer';
 import CarCard from '../../components/CarCard';
 import axiosInstance from '../../api/axiosInstance';
 
-const inp  = { width:'100%', background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6, padding:'0.65rem 0.9rem', color:'#f0f0f0', fontSize:'0.88rem', outline:'none', boxSizing:'border-box' };
+const inp  = { width:'100%', background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6, padding:'0.65rem 0.9rem', color:'#ececec', fontSize:'0.88rem', outline:'none', boxSizing:'border-box' };
 const lbl  = { display:'block', color:'#888', fontSize:'0.78rem', marginBottom:5, fontWeight:600, textTransform:'uppercase', letterSpacing:0.5 };
 const sect = { background:'#141414', border:'1px solid #2a2a2a', borderRadius:10, padding:'1.5rem', marginBottom:'1.5rem' };
-const sectH = { color:'#f0f0f0', fontSize:'1rem', fontWeight:700, marginBottom:'1.25rem', paddingBottom:'0.75rem', borderBottom:'1px solid #1e1e1e' };
+const sectH = { color:'#ececec', fontSize:'1rem', fontWeight:700, marginBottom:'1.25rem', paddingBottom:'0.75rem', borderBottom:'1px solid #1e1e1e' };
 
 export default function UserProfile() {
   
@@ -108,10 +108,10 @@ export default function UserProfile() {
 
   return (
     <div style={{ minHeight:'100vh', background:'#0d0d0d', display:'flex', flexDirection:'column' }}>
-      <style>{`input:focus,select:focus,textarea:focus{border-color:#c9a84c!important;box-shadow:0 0 0 2px rgba(201,168,76,0.12)}`}</style>
+      <style>{`input:focus,select:focus,textarea:focus{border-color:#c41e2a!important;box-shadow:0 0 0 2px rgba(196,30,42,0.12)}`}</style>
       <Navbar />
       <main style={{ flex:1, maxWidth:860, margin:'0 auto', width:'100%', padding:'2rem 1.5rem' }}>
-        <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700, marginBottom:'1.5rem' }}>My Profile</h1>
+        <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700, marginBottom:'1.5rem' }}>My Profile</h1>
 
         {/* Profile form */}
         <div style={sect}>
@@ -126,7 +126,7 @@ export default function UserProfile() {
                     display:'flex', alignItems:'center', justifyContent:'center', position:'relative' }}>
                   {displayAvatar
                     ? <img src={displayAvatar} alt="Avatar" style={{ width:'100%', height:'100%', objectFit:'cover' }} />
-                    : <span style={{ color:'#c9a84c', fontWeight:800, fontSize:'1.4rem' }}>{initials}</span>}
+                    : <span style={{ color:'#c41e2a', fontWeight:800, fontSize:'1.4rem' }}>{initials}</span>}
                   <div style={{ position:'absolute', inset:0, background:'rgba(0,0,0,0.4)',
                     display:'flex', alignItems:'center', justifyContent:'center',
                     opacity:0, transition:'opacity 0.2s' }}
@@ -136,7 +136,7 @@ export default function UserProfile() {
                   </div>
                 </div>
                 <button type="button" onClick={() => avatarRef.current?.click()}
-                  style={{ background:'none', border:'none', color:'#c9a84c', fontSize:'0.78rem',
+                  style={{ background:'none', border:'none', color:'#c41e2a', fontSize:'0.78rem',
                     cursor:'pointer', padding:0 }}>
                   Upload photo
                 </button>
@@ -163,7 +163,7 @@ export default function UserProfile() {
             </div>
 
             <button type="submit" disabled={saving}
-              style={{ background:'#c9a84c', color:'#0d0d0d', border:'none', borderRadius:6,
+              style={{ background:'#c41e2a', color:'#0d0d0d', border:'none', borderRadius:6,
                 padding:'0.65rem 1.5rem', fontWeight:700, fontSize:'0.9rem',
                 cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.6 : 1 }}>
               {saving ? 'Saving…' : 'Save Changes'}
@@ -181,7 +181,7 @@ export default function UserProfile() {
               <PwField field="confirm" label="Confirm New Password" value={pwForm.confirmPassword} />
             </div>
             <button type="submit" disabled={changingPw}
-              style={{ marginTop:'1.25rem', background:'#1e1e1e', color:'#f0f0f0',
+              style={{ marginTop:'1.25rem', background:'#1e1e1e', color:'#ececec',
                 border:'1px solid #2a2a2a', borderRadius:6, padding:'0.65rem 1.5rem',
                 fontWeight:600, fontSize:'0.9rem',
                 cursor: changingPw ? 'not-allowed' : 'pointer', opacity: changingPw ? 0.6 : 1 }}>
@@ -194,8 +194,8 @@ export default function UserProfile() {
         <div style={sect}>
           <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center',
             paddingBottom:'0.75rem', borderBottom:'1px solid #1e1e1e', marginBottom:'1.25rem' }}>
-            <div style={{ color:'#f0f0f0', fontSize:'1rem', fontWeight:700 }}>Saved Listings</div>
-            <Link to="/listings" style={{ color:'#c9a84c', fontSize:'0.82rem' }}>Browse more →</Link>
+            <div style={{ color:'#ececec', fontSize:'1rem', fontWeight:700 }}>Saved Listings</div>
+            <Link to="/listings" style={{ color:'#c41e2a', fontSize:'0.82rem' }}>Browse more →</Link>
           </div>
           {profile?.savedListings?.length > 0 ? (
             <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(220px,1fr))', gap:'1rem' }}>
@@ -204,7 +204,7 @@ export default function UserProfile() {
           ) : (
             <div style={{ color:'#555', textAlign:'center', padding:'2rem 0', fontSize:'0.88rem' }}>
               No saved listings yet.{' '}
-              <Link to="/listings" style={{ color:'#c9a84c' }}>Browse cars →</Link>
+              <Link to="/listings" style={{ color:'#c41e2a' }}>Browse cars →</Link>
             </div>
           )}
         </div>

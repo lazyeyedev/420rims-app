@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import AdminLayout from './AdminLayout';
 import axiosInstance from '../../api/axiosInstance';
 
-const ROLE_COLOR = { admin:'#c9a84c', dealer:'#52a0e0', user:'#888' };
+const ROLE_COLOR = { admin:'#c41e2a', dealer:'#52a0e0', user:'#888' };
 
 export default function AdminUsers() {
   const [users,   setUsers]   = useState([]);
@@ -53,13 +53,13 @@ export default function AdminUsers() {
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center',
         marginBottom:'1.5rem', flexWrap:'wrap', gap:'1rem' }}>
         <div>
-          <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>Users</h1>
+          <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>Users</h1>
           <div style={{ color:'#555', fontSize:'0.8rem', marginTop:3 }}>{total} total</div>
         </div>
         <input value={search} onChange={e=>handleSearch(e.target.value)}
           placeholder="Search name or email…"
           style={{ background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6,
-            padding:'0.5rem 0.9rem', color:'#f0f0f0', fontSize:'0.85rem',
+            padding:'0.5rem 0.9rem', color:'#ececec', fontSize:'0.85rem',
             outline:'none', width:250 }} />
       </div>
 
@@ -89,12 +89,12 @@ export default function AdminUsers() {
                           <div style={{ width:34, height:34, borderRadius:'50%', flexShrink:0,
                             background:'#1e1e1e', border:'1px solid #2a2a2a',
                             display:'flex', alignItems:'center', justifyContent:'center',
-                            color:'#c9a84c', fontSize:'0.8rem', fontWeight:800, overflow:'hidden' }}>
+                            color:'#c41e2a', fontSize:'0.8rem', fontWeight:800, overflow:'hidden' }}>
                             {u.avatar
                               ? <img src={u.avatar} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />
                               : u.name?.[0]?.toUpperCase()}
                           </div>
-                          <span style={{ color:'#f0f0f0', fontSize:'0.85rem', fontWeight:500 }}>
+                          <span style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:500 }}>
                             {u.name}
                           </span>
                         </div>
@@ -118,12 +118,12 @@ export default function AdminUsers() {
                           title={u.role==='admin' ? 'Cannot deactivate admin' : undefined}
                           style={{ width:42, height:24, borderRadius:12, border:'none', cursor:
                             u.role==='admin'?'not-allowed':'pointer', position:'relative',
-                            background: u.isActive ? '#c9a84c' : '#2a2a2a',
+                            background: u.isActive ? '#c41e2a' : '#2a2a2a',
                             transition:'background 0.2s', flexShrink:0,
                             opacity: toggling[u._id] ? 0.5 : 1 }}>
                           <span style={{ position:'absolute', top:3,
                             left: u.isActive ? 21 : 3, width:18, height:18,
-                            borderRadius:'50%', background:'#f0f0f0',
+                            borderRadius:'50%', background:'#ececec',
                             transition:'left 0.2s', display:'block' }} />
                         </button>
                       </td>
@@ -139,8 +139,8 @@ export default function AdminUsers() {
           {Array.from({length:totalPages},(_,i)=>i+1).map(p=>(
             <button key={p} onClick={()=>setPage(p)}
               style={{ width:36,height:36,borderRadius:6,border:'1px solid',
-                borderColor:p===page?'#c9a84c':'#2a2a2a',
-                background:p===page?'#c9a84c':'#1a1a1a',
+                borderColor:p===page?'#c41e2a':'#2a2a2a',
+                background:p===page?'#c41e2a':'#1a1a1a',
                 color:p===page?'#0d0d0d':'#ccc',cursor:'pointer',fontSize:'0.85rem' }}>
               {p}
             </button>

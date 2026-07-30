@@ -5,12 +5,12 @@ import axiosInstance from '../../api/axiosInstance';
 
 const GHANA_REGIONS = ['Greater Accra','Ashanti','Western','Eastern','Central','Northern','Upper East','Upper West','Volta','Bono','Bono East','Ahafo','Savannah','North East','Oti','Western North'];
 
-const TIER_COLORS = { basic:'#888', pro:'#c9a84c', premium:'#e0c070' };
+const TIER_COLORS = { basic:'#888', pro:'#c41e2a', premium:'#e8a0a6' };
 
 const label = { display:'block', color:'#888', fontSize:'0.78rem', marginBottom:5, fontWeight:600, textTransform:'uppercase', letterSpacing:0.5 };
-const inp   = { width:'100%', background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6, padding:'0.65rem 0.9rem', color:'#f0f0f0', fontSize:'0.88rem', outline:'none', boxSizing:'border-box' };
+const inp   = { width:'100%', background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6, padding:'0.65rem 0.9rem', color:'#ececec', fontSize:'0.88rem', outline:'none', boxSizing:'border-box' };
 const sect  = { background:'#141414', border:'1px solid #2a2a2a', borderRadius:10, padding:'1.25rem', marginBottom:'1.25rem' };
-const sectH = { color:'#c9a84c', fontSize:'0.75rem', fontWeight:700, letterSpacing:1, textTransform:'uppercase', marginBottom:'1rem', paddingBottom:'0.5rem', borderBottom:'1px solid #1e1e1e' };
+const sectH = { color:'#c41e2a', fontSize:'0.75rem', fontWeight:700, letterSpacing:1, textTransform:'uppercase', marginBottom:'1rem', paddingBottom:'0.5rem', borderBottom:'1px solid #1e1e1e' };
 const row2  = { display:'grid', gridTemplateColumns:'1fr 1fr', gap:'1rem' };
 
 export default function DealerProfile() {
@@ -87,7 +87,7 @@ export default function DealerProfile() {
     <DealerLayout>
       <div style={{ maxWidth:700, margin:'0 auto' }}>
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
-          <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>Dealer Profile</h1>
+          <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>Dealer Profile</h1>
           <span style={{ background: TIER_COLORS[tier]+'22', color: TIER_COLORS[tier],
             fontSize:'0.72rem', fontWeight:800, padding:'4px 12px', borderRadius:4,
             textTransform:'uppercase', letterSpacing:0.5 }}>
@@ -96,7 +96,7 @@ export default function DealerProfile() {
         </div>
 
         <form onSubmit={handleSave} noValidate>
-          <style>{`input:focus,select:focus,textarea:focus{border-color:#c9a84c!important;box-shadow:0 0 0 2px rgba(201,168,76,0.12)} select option{background:#1a1a1a}`}</style>
+          <style>{`input:focus,select:focus,textarea:focus{border-color:#c41e2a!important;box-shadow:0 0 0 2px rgba(196,30,42,0.12)} select option{background:#1a1a1a}`}</style>
 
           {/* Images */}
           <div style={sect}>
@@ -140,7 +140,7 @@ export default function DealerProfile() {
                   JPEG, PNG, or WebP · Max 5MB
                   <br />
                   <button type="button" onClick={() => logoRef.current?.click()}
-                    style={{ background:'none', border:'none', color:'#c9a84c', fontSize:'0.8rem',
+                    style={{ background:'none', border:'none', color:'#c41e2a', fontSize:'0.8rem',
                       cursor:'pointer', padding:0, marginTop:4 }}>
                     Upload logo →
                   </button>
@@ -200,10 +200,10 @@ export default function DealerProfile() {
           </div>
 
           {/* Subscription note */}
-          <div style={{ ...sect, borderColor:'#c9a84c22', background:'#1a1700' }}>
+          <div style={{ ...sect, borderColor:'#c41e2a22', background:'#1a1700' }}>
             <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
               <div>
-                <div style={{ color:'#c9a84c', fontWeight:700, fontSize:'0.88rem' }}>
+                <div style={{ color:'#c41e2a', fontWeight:700, fontSize:'0.88rem' }}>
                   Subscription: {tier.charAt(0).toUpperCase()+tier.slice(1)} Plan
                 </div>
                 <div style={{ color:'#666', fontSize:'0.8rem', marginTop:3 }}>
@@ -219,7 +219,7 @@ export default function DealerProfile() {
           </div>
 
           <button type="submit" disabled={saving}
-            style={{ width:'100%', background:'#c9a84c', color:'#0d0d0d', border:'none',
+            style={{ width:'100%', background:'#c41e2a', color:'#0d0d0d', border:'none',
               borderRadius:8, padding:'0.9rem', fontWeight:800, fontSize:'1rem',
               cursor: saving ? 'not-allowed' : 'pointer', opacity: saving ? 0.6 : 1 }}>
             {saving ? 'Saving…' : 'Save Profile'}

@@ -22,10 +22,10 @@ const s = {
     padding: '2.5rem 2rem', boxShadow: '0 8px 48px rgba(0,0,0,0.8)',
   },
   logo:     { textAlign: 'center', marginBottom: '2rem' },
-  logoText: { fontSize: '1.6rem', fontWeight: 900, letterSpacing: 3, color: '#c9a84c' },
+  logoText: { fontSize: '1.6rem', fontWeight: 900, letterSpacing: 3, color: '#c41e2a' },
   logoSub:  { color: '#444', fontSize: '0.75rem', marginTop: 4, letterSpacing: 2,
     textTransform: 'uppercase', fontWeight: 600 },
-  divider:  { width: 32, height: 2, background: '#c9a84c33', margin: '1rem auto 0' },
+  divider:  { width: 32, height: 2, background: '#c41e2a33', margin: '1rem auto 0' },
   title:    { color: '#888', fontSize: '0.82rem', fontWeight: 600, marginBottom: '1.75rem',
     textAlign: 'center', textTransform: 'uppercase', letterSpacing: 1 },
   group:    { marginBottom: '1.2rem' },
@@ -34,12 +34,12 @@ const s = {
   inputWrap: { position: 'relative' },
   input: {
     width: '100%', background: '#0d0d0d', border: '1px solid #1e1e1e',
-    borderRadius: 6, padding: '0.75rem 1rem', color: '#f0f0f0',
+    borderRadius: 6, padding: '0.75rem 1rem', color: '#ececec',
     fontSize: '0.92rem', outline: 'none', boxSizing: 'border-box',
   },
   inputPw: {
     width: '100%', background: '#0d0d0d', border: '1px solid #1e1e1e',
-    borderRadius: 6, padding: '0.75rem 3rem 0.75rem 1rem', color: '#f0f0f0',
+    borderRadius: 6, padding: '0.75rem 3rem 0.75rem 1rem', color: '#ececec',
     fontSize: '0.92rem', outline: 'none', boxSizing: 'border-box',
   },
   toggle: {
@@ -49,7 +49,7 @@ const s = {
   },
   error: { color: '#e05252', fontSize: '0.76rem', marginTop: 4 },
   btn: {
-    width: '100%', background: '#c9a84c', color: '#0a0a0a', border: 'none',
+    width: '100%', background: '#c41e2a', color: '#0a0a0a', border: 'none',
     borderRadius: 6, padding: '0.85rem', fontWeight: 800, fontSize: '0.92rem',
     marginTop: '0.5rem', cursor: 'pointer', letterSpacing: 0.5,
     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
@@ -59,7 +59,7 @@ const s = {
 };
 
 const focusStyle = `
-  input:focus { border-color: #c9a84c !important; box-shadow: 0 0 0 2px rgba(201,168,76,0.1); }
+  input:focus { border-color: #c41e2a !important; box-shadow: 0 0 0 2px rgba(196,30,42,0.1); }
   @keyframes spin { to { transform: rotate(360deg); } }
 `;
 
@@ -133,7 +133,7 @@ export default function AdminLogin() {
 
         <div style={s.back}>
           <Link to="/" style={s.backLink}
-            onMouseEnter={e => e.target.style.color = '#c9a84c'}
+            onMouseEnter={e => e.target.style.color = '#c41e2a'}
             onMouseLeave={e => e.target.style.color = '#333'}>
             ← Back to site
           </Link>

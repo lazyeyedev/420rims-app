@@ -8,7 +8,7 @@ const PLACEHOLDER = 'https://via.placeholder.com/80x56/141414/444?text=No+Image'
 
 const statusBadge = (l) => {
   if (!l.isActive)   return { label:'Inactive',        bg:'#e0525222', color:'#e05252' };
-  if (!l.isApproved) return { label:'Pending Approval', bg:'#c9a84c22', color:'#c9a84c' };
+  if (!l.isApproved) return { label:'Pending Approval', bg:'#c41e2a22', color:'#c41e2a' };
   return                    { label:'Active',           bg:'#52c07a22', color:'#52c07a' };
 };
 
@@ -53,11 +53,11 @@ export default function DealerListings() {
     <DealerLayout>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
         <div>
-          <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>My Listings</h1>
+          <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>My Listings</h1>
           {!loading && <div style={{ color:'#555', fontSize:'0.8rem', marginTop:2 }}>{total} total</div>}
         </div>
         <Link to="/dealer/listings/create"
-          style={{ background:'#c9a84c', color:'#0d0d0d', padding:'0.55rem 1.1rem',
+          style={{ background:'#c41e2a', color:'#0d0d0d', padding:'0.55rem 1.1rem',
             borderRadius:6, fontWeight:700, fontSize:'0.85rem', textDecoration:'none' }}>
           + Add New Listing
         </Link>
@@ -71,7 +71,7 @@ export default function DealerListings() {
             <div style={{ fontSize:'2.5rem', marginBottom:'1rem' }}>🚗</div>
             <div style={{ marginBottom:'1rem' }}>No listings yet.</div>
             <Link to="/dealer/listings/create"
-              style={{ color:'#c9a84c', fontWeight:600, fontSize:'0.9rem' }}>
+              style={{ color:'#c41e2a', fontWeight:600, fontSize:'0.9rem' }}>
               Create your first listing →
             </Link>
           </div>
@@ -102,7 +102,7 @@ export default function DealerListings() {
                             border:'1px solid #2a2a2a', flexShrink:0 }}
                           onError={e=>{e.target.src=PLACEHOLDER;}} />
                         <div>
-                          <div style={{ color:'#f0f0f0', fontSize:'0.85rem', fontWeight:600,
+                          <div style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600,
                             maxWidth:220, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
                             {l.title}
                           </div>
@@ -112,7 +112,7 @@ export default function DealerListings() {
                           </div>
                         </div>
                       </td>
-                      <td style={{ padding:'0.75rem 1rem', color:'#c9a84c', fontWeight:700,
+                      <td style={{ padding:'0.75rem 1rem', color:'#c41e2a', fontWeight:700,
                         fontSize:'0.88rem', whiteSpace:'nowrap' }}>
                         {fmt(l.price, l.currency)}
                       </td>
@@ -147,7 +147,7 @@ export default function DealerListings() {
                           {deleting===l._id ? '…' : 'Delete'}
                         </button>
                         <button onClick={() => navigate(`/dealer/boost?listingId=${l._id}`)}
-                          style={{ background:'#1a1400', border:'1px solid #c9a84c44', color:'#c9a84c',
+                          style={{ background:'#1a1400', border:'1px solid #c41e2a44', color:'#c41e2a',
                             borderRadius:5, padding:'4px 12px', fontSize:'0.78rem', cursor:'pointer' }}>
                           Boost
                         </button>
@@ -167,8 +167,8 @@ export default function DealerListings() {
           {Array.from({ length: totalPages }, (_, i) => i+1).map(p => (
             <button key={p} onClick={() => setPage(p)}
               style={{ width:36, height:36, borderRadius:6, border:'1px solid',
-                borderColor: p===page ? '#c9a84c' : '#2a2a2a',
-                background:  p===page ? '#c9a84c' : '#1a1a1a',
+                borderColor: p===page ? '#c41e2a' : '#2a2a2a',
+                background:  p===page ? '#c41e2a' : '#1a1a1a',
                 color:       p===page ? '#0d0d0d' : '#ccc',
                 cursor:'pointer', fontSize:'0.85rem', fontWeight: p===page ? 700 : 400 }}>
               {p}

@@ -8,7 +8,7 @@ import axiosInstance from '../../api/axiosInstance';
 const PLACEHOLDER = 'https://via.placeholder.com/72x52/141414/444?text=No+Image';
 
 const STATUS_STYLE = {
-  new:       { bg:'#c9a84c22', color:'#c9a84c' },
+  new:       { bg:'#c41e2a22', color:'#c41e2a' },
   read:      { bg:'#88888822', color:'#888'     },
   responded: { bg:'#52c07a22', color:'#52c07a'  },
   closed:    { bg:'#33333322', color:'#555'      },
@@ -39,14 +39,14 @@ export default function UserEnquiries() {
 
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'1.5rem' }}>
           <div>
-            <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>My Enquiries</h1>
+            <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>My Enquiries</h1>
             {!loading && (
               <div style={{ color:'#555', fontSize:'0.8rem', marginTop:3 }}>
                 {enquiries.length} enquir{enquiries.length !== 1 ? 'ies' : 'y'} sent
               </div>
             )}
           </div>
-          <Link to="/listings" style={{ background:'#c9a84c', color:'#0d0d0d', padding:'0.55rem 1.1rem',
+          <Link to="/listings" style={{ background:'#c41e2a', color:'#0d0d0d', padding:'0.55rem 1.1rem',
             borderRadius:6, fontWeight:700, fontSize:'0.85rem', textDecoration:'none' }}>
             Browse Cars
           </Link>
@@ -59,7 +59,7 @@ export default function UserEnquiries() {
             padding:'3rem', textAlign:'center' }}>
             <div style={{ fontSize:'2.5rem', marginBottom:'1rem' }}>💬</div>
             <div style={{ color:'#555', marginBottom:'1rem' }}>You haven't sent any enquiries yet.</div>
-            <Link to="/listings" style={{ color:'#c9a84c', fontWeight:600 }}>Find a car →</Link>
+            <Link to="/listings" style={{ color:'#c41e2a', fontWeight:600 }}>Find a car →</Link>
           </div>
         ) : (
           <div style={{ display:'flex', flexDirection:'column', gap:'0.75rem' }}>
@@ -70,7 +70,7 @@ export default function UserEnquiries() {
 
               return (
                 <div key={e._id}
-                  style={{ background:'#141414', border:`1px solid ${isOpen?'#c9a84c44':'#2a2a2a'}`,
+                  style={{ background:'#141414', border:`1px solid ${isOpen?'#c41e2a44':'#2a2a2a'}`,
                     borderRadius:10, overflow:'hidden', transition:'border-color 0.2s' }}>
 
                   {/* Summary row */}
@@ -86,7 +86,7 @@ export default function UserEnquiries() {
                       onError={ev=>ev.target.src=PLACEHOLDER} />
 
                     <div style={{ flex:1, minWidth:0 }}>
-                      <div style={{ color:'#f0f0f0', fontSize:'0.88rem', fontWeight:600,
+                      <div style={{ color:'#ececec', fontSize:'0.88rem', fontWeight:600,
                         whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
                         {e.listing?.title || 'Listing no longer available'}
                       </div>
@@ -125,7 +125,7 @@ export default function UserEnquiries() {
                             textTransform:'uppercase', letterSpacing:0.5, marginBottom:4 }}>
                             Enquiry Type
                           </div>
-                          <div style={{ color:'#f0f0f0', fontSize:'0.88rem' }}>
+                          <div style={{ color:'#ececec', fontSize:'0.88rem' }}>
                             {TYPE_LABEL[e.type] || e.type}
                           </div>
                         </div>
@@ -134,7 +134,7 @@ export default function UserEnquiries() {
                             textTransform:'uppercase', letterSpacing:0.5, marginBottom:4 }}>
                             Dealer
                           </div>
-                          <div style={{ color:'#f0f0f0', fontSize:'0.88rem' }}>
+                          <div style={{ color:'#ececec', fontSize:'0.88rem' }}>
                             {e.dealer?.businessName || '—'}
                           </div>
                         </div>
@@ -159,7 +159,7 @@ export default function UserEnquiries() {
                         </div>
                         {e.listing?._id && (
                           <Link to={`/listings/${e.listing._id}`}
-                            style={{ color:'#c9a84c', fontSize:'0.82rem', fontWeight:600 }}>
+                            style={{ color:'#c41e2a', fontSize:'0.82rem', fontWeight:600 }}>
                             View Listing →
                           </Link>
                         )}

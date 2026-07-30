@@ -22,9 +22,9 @@ const s = {
     padding: '2.5rem 2rem', boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
   },
   logo:     { textAlign: 'center', marginBottom: '2rem' },
-  logoText: { fontSize: '1.8rem', fontWeight: 800, letterSpacing: 1, color: '#c9a84c' },
+  logoText: { fontSize: '1.8rem', fontWeight: 800, letterSpacing: 1, color: '#c41e2a' },
   logoSub:  { color: '#888', fontSize: '0.8rem', marginTop: 2 },
-  title:    { color: '#f0f0f0', fontSize: '1.25rem', fontWeight: 600,
+  title:    { color: '#ececec', fontSize: '1.25rem', fontWeight: 600,
     marginBottom: '1.5rem', textAlign: 'center' },
   group:    { marginBottom: '1.2rem' },
   label:    { display: 'block', color: '#aaa', fontSize: '0.85rem',
@@ -32,12 +32,12 @@ const s = {
   inputWrap: { position: 'relative' },
   input: {
     width: '100%', background: '#1a1a1a', border: '1px solid #2a2a2a',
-    borderRadius: 6, padding: '0.7rem 1rem', color: '#f0f0f0',
+    borderRadius: 6, padding: '0.7rem 1rem', color: '#ececec',
     fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box',
   },
   inputPassword: {
     width: '100%', background: '#1a1a1a', border: '1px solid #2a2a2a',
-    borderRadius: 6, padding: '0.7rem 3rem 0.7rem 1rem', color: '#f0f0f0',
+    borderRadius: 6, padding: '0.7rem 3rem 0.7rem 1rem', color: '#ececec',
     fontSize: '0.95rem', outline: 'none', boxSizing: 'border-box',
   },
   toggle: {
@@ -47,7 +47,7 @@ const s = {
   },
   error:  { color: '#e05252', fontSize: '0.78rem', marginTop: 4 },
   btn: {
-    width: '100%', background: '#c9a84c', color: '#0d0d0d', border: 'none',
+    width: '100%', background: '#c41e2a', color: '#0d0d0d', border: 'none',
     borderRadius: 6, padding: '0.8rem', fontWeight: 700, fontSize: '1rem',
     marginTop: '0.5rem', cursor: 'pointer', display: 'flex',
     alignItems: 'center', justifyContent: 'center', gap: 8,
@@ -57,7 +57,7 @@ const s = {
 };
 
 const focusStyle = `
-  input:focus { border-color: #c9a84c !important; box-shadow: 0 0 0 2px rgba(201,168,76,0.15); }
+  input:focus { border-color: #c41e2a !important; box-shadow: 0 0 0 2px rgba(196,30,42,0.15); }
   @keyframes spin { to { transform: rotate(360deg); } }
 `;
 
@@ -132,9 +132,9 @@ export default function Login() {
         </form>
 
         <div style={s.links}>
-          <Link to="/register" style={{ color: '#c9a84c', fontWeight: 600 }}>Create account</Link>
+          <Link to="/register" style={{ color: '#c41e2a', fontWeight: 600 }}>Create account</Link>
           <span style={s.divider}>·</span>
-          <Link to="/register/dealer" style={{ color: '#c9a84c', fontWeight: 600 }}>Register as Dealer</Link>
+          <Link to="/register/dealer" style={{ color: '#c41e2a', fontWeight: 600 }}>Register as Dealer</Link>
         </div>
       </div>
     </div>

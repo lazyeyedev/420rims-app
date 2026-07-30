@@ -89,7 +89,7 @@ export default function Search() {
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center',
           flexWrap:'wrap', gap:'1rem', marginBottom:'1.5rem' }}>
           <div>
-            <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>Browse Cars</h1>
+            <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>Browse Cars</h1>
             {!loading && (
               <div style={{ color:'#666', fontSize:'0.82rem', marginTop:3 }}>
                 {total.toLocaleString()} listing{total !== 1 ? 's' : ''} found
@@ -138,8 +138,8 @@ export default function Search() {
                 {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
                   <button key={p} onClick={() => setPage(p)}
                     style={{ width:38, height:38, borderRadius:6, border:'1px solid',
-                      borderColor: p === page ? '#c9a84c' : '#2a2a2a',
-                      background: p === page ? '#c9a84c' : '#1a1a1a',
+                      borderColor: p === page ? '#c41e2a' : '#2a2a2a',
+                      background: p === page ? '#c41e2a' : '#1a1a1a',
                       color: p === page ? '#0d0d0d' : '#ccc',
                       fontWeight: p === page ? 700 : 400,
                       cursor:'pointer', fontSize:'0.85rem' }}>

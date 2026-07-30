@@ -17,7 +17,7 @@ export default function CarCard({ listing }) {
       style={{ background:'#141414', border:'1px solid #2a2a2a', borderRadius:10,
         overflow:'hidden', cursor:'pointer', transition:'transform 0.18s,border-color 0.18s',
         display:'flex', flexDirection:'column' }}
-      onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-3px)';e.currentTarget.style.borderColor='#c9a84c44';}}
+      onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-3px)';e.currentTarget.style.borderColor='#c41e2a44';}}
       onMouseLeave={e=>{e.currentTarget.style.transform='translateY(0)';e.currentTarget.style.borderColor='#2a2a2a';}}>
 
       {/* Image */}
@@ -36,12 +36,12 @@ export default function CarCard({ listing }) {
 
       {/* Body */}
       <div style={{ padding:'0.9rem', flex:1, display:'flex', flexDirection:'column', gap:6 }}>
-        <div style={{ fontWeight:700, fontSize:'0.95rem', color:'#f0f0f0',
+        <div style={{ fontWeight:700, fontSize:'0.95rem', color:'#ececec',
           whiteSpace:'nowrap', overflow:'hidden', textOverflow:'ellipsis' }}>
           {listing.title}
         </div>
 
-        <div style={{ color:'#c9a84c', fontWeight:800, fontSize:'1.05rem' }}>
+        <div style={{ color:'#c41e2a', fontWeight:800, fontSize:'1.05rem' }}>
           {fmt(listing.price, listing.currency)}
         </div>
 
@@ -67,7 +67,7 @@ export default function CarCard({ listing }) {
             <div style={{ color:'#888', fontSize:'0.75rem', display:'flex', alignItems:'center', gap:4 }}>
               {listing.dealer.businessName}
               {listing.dealer.isVerified && (
-                <span title="Verified Dealer" style={{ color:'#c9a84c', fontSize:'0.75rem' }}>✓</span>
+                <span title="Verified Dealer" style={{ color:'#c41e2a', fontSize:'0.75rem' }}>✓</span>
               )}
             </div>
           )}

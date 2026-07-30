@@ -50,14 +50,14 @@ export default function Home() {
         padding:'5rem 1.5rem 4rem', textAlign:'center', borderBottom:'1px solid #1a1a1a',
         animation:'fadeIn 0.5s ease' }}>
         <div style={{ maxWidth:800, margin:'0 auto' }}>
-          <div style={{ color:'#c9a84c', fontSize:'0.8rem', fontWeight:700, letterSpacing:3,
+          <div style={{ color:'#c41e2a', fontSize:'0.8rem', fontWeight:700, letterSpacing:3,
             textTransform:'uppercase', marginBottom:'1rem' }}>
             Ghana's #1 Car Platform
           </div>
-          <h1 style={{ fontSize:'clamp(2rem,5vw,3.5rem)', fontWeight:900, color:'#f0f0f0',
+          <h1 style={{ fontSize:'clamp(2rem,5vw,3.5rem)', fontWeight:900, color:'#ececec',
             lineHeight:1.15, marginBottom:'1rem' }}>
             Ghana's Premier<br />
-            <span style={{ color:'#c9a84c' }}>Car Marketplace</span>
+            <span style={{ color:'#c41e2a' }}>Car Marketplace</span>
           </h1>
           <p style={{ color:'#888', fontSize:'1.05rem', marginBottom:'2.5rem', maxWidth:520, margin:'0 auto 2.5rem' }}>
             Buy and sell quality vehicles across all sixteen regions. Trusted dealers, verified listings.
@@ -72,8 +72,8 @@ export default function Home() {
         {(loadingB || boosted.length > 0) && (
           <section style={{ marginBottom:'3.5rem' }}>
             <div style={{ display:'flex', alignItems:'center', gap:'1rem', marginBottom:'1.5rem' }}>
-              <h2 style={{ color:'#f0f0f0', fontSize:'1.3rem', fontWeight:700 }}>Featured Listings</h2>
-              <span style={{ background:'#c9a84c', color:'#0d0d0d', fontSize:'0.65rem',
+              <h2 style={{ color:'#ececec', fontSize:'1.3rem', fontWeight:700 }}>Featured Listings</h2>
+              <span style={{ background:'#c41e2a', color:'#0d0d0d', fontSize:'0.65rem',
                 fontWeight:800, padding:'2px 8px', borderRadius:3, letterSpacing:0.5 }}>BOOSTED</span>
             </div>
             <div style={grid}>
@@ -86,8 +86,8 @@ export default function Home() {
         {/* All listings */}
         <section>
           <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:'1.5rem' }}>
-            <h2 style={{ color:'#f0f0f0', fontSize:'1.3rem', fontWeight:700 }}>Latest Listings</h2>
-            <Link to="/listings" style={{ color:'#c9a84c', fontSize:'0.88rem', fontWeight:600 }}>
+            <h2 style={{ color:'#ececec', fontSize:'1.3rem', fontWeight:700 }}>Latest Listings</h2>
+            <Link to="/listings" style={{ color:'#c41e2a', fontSize:'0.88rem', fontWeight:600 }}>
               View All →
             </Link>
           </div>
@@ -102,7 +102,7 @@ export default function Home() {
           {!loadingA && all.length > 0 && (
             <div style={{ textAlign:'center', marginTop:'2rem' }}>
               <Link to="/listings" style={{ display:'inline-block', background:'transparent',
-                border:'1px solid #c9a84c', color:'#c9a84c', padding:'0.7rem 2rem',
+                border:'1px solid #c41e2a', color:'#c41e2a', padding:'0.7rem 2rem',
                 borderRadius:6, fontWeight:600, fontSize:'0.9rem' }}>
                 Browse All Cars
               </Link>

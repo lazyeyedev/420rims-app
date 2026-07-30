@@ -17,7 +17,7 @@ function ConfirmModal({ title, message, onConfirm, onCancel }) {
       display:'flex', alignItems:'center', justifyContent:'center', padding:'1rem' }}>
       <div style={{ background:'#141414', border:'1px solid #2a2a2a', borderRadius:10,
         padding:'1.75rem', maxWidth:400, width:'100%' }}>
-        <div style={{ color:'#f0f0f0', fontWeight:700, fontSize:'1rem', marginBottom:'0.75rem' }}>{title}</div>
+        <div style={{ color:'#ececec', fontWeight:700, fontSize:'1rem', marginBottom:'0.75rem' }}>{title}</div>
         <div style={{ color:'#888', fontSize:'0.88rem', lineHeight:1.6, marginBottom:'1.5rem' }}>{message}</div>
         <div style={{ display:'flex', gap:'0.75rem', justifyContent:'flex-end' }}>
           <button onClick={onCancel}
@@ -109,17 +109,17 @@ export default function AdminListings() {
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center',
         marginBottom:'1.5rem', flexWrap:'wrap', gap:'1rem' }}>
         <div>
-          <h1 style={{ color:'#f0f0f0', fontSize:'1.4rem', fontWeight:700 }}>Listings</h1>
+          <h1 style={{ color:'#ececec', fontSize:'1.4rem', fontWeight:700 }}>Listings</h1>
           <div style={{ color:'#555', fontSize:'0.8rem', marginTop:3 }}>{total} total</div>
         </div>
         <div style={{ display:'flex', gap:'0.75rem', flexWrap:'wrap', alignItems:'center' }}>
           <input value={search} onChange={e=>handleSearch(e.target.value)} placeholder="Search title, make…"
             style={{ background:'#1a1a1a', border:'1px solid #2a2a2a', borderRadius:6,
-              padding:'0.45rem 0.9rem', color:'#f0f0f0', fontSize:'0.85rem', outline:'none', width:220 }} />
+              padding:'0.45rem 0.9rem', color:'#ececec', fontSize:'0.85rem', outline:'none', width:220 }} />
           <div style={{ display:'flex', gap:'0.4rem' }}>
             {FILTERS.map(f => (
               <button key={f.value} onClick={() => { setFilter(f.value); setPage(1); }}
-                style={{ background: filter===f.value?'#c9a84c':'#1a1a1a',
+                style={{ background: filter===f.value?'#c41e2a':'#1a1a1a',
                   color: filter===f.value?'#0d0d0d':'#888', border:'1px solid #2a2a2a',
                   borderRadius:6, padding:'0.45rem 0.85rem', fontSize:'0.82rem', cursor:'pointer',
                   fontWeight: filter===f.value?700:400 }}>
@@ -157,7 +157,7 @@ export default function AdminListings() {
                               border:'1px solid #2a2a2a', flexShrink:0 }}
                             onError={e=>{e.target.src=PLACEHOLDER;}} />
                           <div>
-                            <div style={{ color:'#f0f0f0', fontSize:'0.82rem', fontWeight:600,
+                            <div style={{ color:'#ececec', fontSize:'0.82rem', fontWeight:600,
                               maxWidth:180, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
                               {l.title}
                             </div>
@@ -170,7 +170,7 @@ export default function AdminListings() {
                       <td style={{ padding:'0.8rem 1rem', color:'#888', fontSize:'0.82rem' }}>
                         {l.dealer?.businessName || '—'}
                       </td>
-                      <td style={{ padding:'0.8rem 1rem', color:'#c9a84c', fontWeight:700,
+                      <td style={{ padding:'0.8rem 1rem', color:'#c41e2a', fontWeight:700,
                         fontSize:'0.82rem', whiteSpace:'nowrap' }}>
                         {fmt(l.price, l.currency)}
                       </td>
@@ -179,7 +179,7 @@ export default function AdminListings() {
                         {l.isApproved
                           ? <span style={{ background:'#52c07a22',color:'#52c07a',fontSize:'0.7rem',padding:'2px 8px',borderRadius:4,fontWeight:700 }}>Approved</span>
                           : l.isActive
-                            ? <span style={{ background:'#c9a84c22',color:'#c9a84c',fontSize:'0.7rem',padding:'2px 8px',borderRadius:4,fontWeight:700 }}>Pending</span>
+                            ? <span style={{ background:'#c41e2a22',color:'#c41e2a',fontSize:'0.7rem',padding:'2px 8px',borderRadius:4,fontWeight:700 }}>Pending</span>
                             : <span style={{ background:'#e0525222',color:'#e05252',fontSize:'0.7rem',padding:'2px 8px',borderRadius:4,fontWeight:700 }}>Rejected</span>}
                       </td>
                       <td style={{ padding:'0.8rem 1rem', color:'#888', fontSize:'0.82rem' }}>
@@ -193,7 +193,7 @@ export default function AdminListings() {
                           {!l.isApproved && (
                             <button onClick={() => act(l._id,'approve','Listing approved',{isApproved:true,isActive:true})}
                               disabled={!!acting[l._id]}
-                              style={{ background:'#c9a84c',border:'none',color:'#0d0d0d',borderRadius:4,
+                              style={{ background:'#c41e2a',border:'none',color:'#0d0d0d',borderRadius:4,
                                 padding:'3px 10px',fontSize:'0.75rem',cursor:'pointer',fontWeight:700,
                                 opacity:acting[l._id]?0.4:1 }}>
                               {acting[l._id]==='approve'?'…':'Approve'}
@@ -228,8 +228,8 @@ export default function AdminListings() {
           {Array.from({length:totalPages},(_,i)=>i+1).map(p=>(
             <button key={p} onClick={()=>setPage(p)}
               style={{ width:36,height:36,borderRadius:6,border:'1px solid',
-                borderColor:p===page?'#c9a84c':'#2a2a2a',
-                background:p===page?'#c9a84c':'#1a1a1a',
+                borderColor:p===page?'#c41e2a':'#2a2a2a',
+                background:p===page?'#c41e2a':'#1a1a1a',
                 color:p===page?'#0d0d0d':'#ccc',cursor:'pointer',fontSize:'0.85rem' }}>
               {p}
             </button>
