@@ -4,7 +4,8 @@ import { toast } from 'react-toastify';
 import DealerLayout from './DealerLayout';
 import axiosInstance from '../../api/axiosInstance';
 
-const PLACEHOLDER = 'https://via.placeholder.com/80x56/141414/444?text=No+Image';
+import { getPlaceholder } from '../../utils/placeholder';
+const PLACEHOLDER = getPlaceholder(80, 56);
 
 const statusBadge = (l) => {
   if (!l.isActive)   return { label:'Inactive',        bg:'#e0525222', color:'#e05252' };

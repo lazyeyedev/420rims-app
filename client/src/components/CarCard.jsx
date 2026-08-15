@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import BoostBadge from './BoostBadge';
 
-const PLACEHOLDER = 'https://via.placeholder.com/400x260/141414/444?text=No+Image';
+import { getPlaceholder } from '../utils/placeholder';
+const PLACEHOLDER = getPlaceholder(400, 260);
 
 const fmt = (n, currency) =>
   currency === 'USD'

@@ -244,8 +244,9 @@ const deleteListingAdmin = async (req, res) => {
   }
 
   // Delete all images from Cloudinary
-  if (listing.images && listing.images.length > 0) {
-    const deletePromises = listing.images.map((url) => {
+  const validImageUrls = (listing.images || []).filter((url) => typeof url === 'string' && url.length > 0);
+  if (validImageUrls.length > 0) {
+    const deletePromises = validImageUrls.map((url) => {
       const parts = url.split('/');
       const filenameWithExt = parts[parts.length - 1];
       const filename = filenameWithExt.split('.')[0];

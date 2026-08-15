@@ -10,7 +10,8 @@ import BoostBadge from '../components/BoostBadge';
 import axiosInstance from '../api/axiosInstance';
 import { useAuth } from '../context/AuthContext';
 
-const PLACEHOLDER = 'https://via.placeholder.com/800x520/141414/444?text=No+Image';
+import { getPlaceholder } from '../utils/placeholder';
+const PLACEHOLDER = getPlaceholder(800, 520);
 const fmt = (n, cur) => cur === 'USD' ? `$${Number(n).toLocaleString()}` : `GHS ${Number(n).toLocaleString()}`;
 
 const guestSchema = yup.object({

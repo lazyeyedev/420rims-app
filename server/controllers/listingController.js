@@ -83,7 +83,7 @@ const createListing = async (req, res) => {
     throw new Error('title, make, model, year, and price are required');
   }
 
-  const imageUrls = req.files ? req.files.map((f) => f.path) : [];
+  const imageUrls = req.files ? req.files.map((f) => f.path || f.secure_url || f.url) : [];
 
   const listing = await Listing.create({
     dealer: dealer._id,
@@ -126,7 +126,7 @@ const updateListing = async (req, res) => {
   forbidden.forEach((f) => delete updates[f]);
 
   if (req.files && req.files.length > 0) {
-    const newUrls = req.files.map((f) => f.path);
+    const newUrls = req.files.map((f) => f.path || f.secure_url || f.url);
     const combined = [...listing.images, ...newUrls];
     updates.images = combined.slice(0, 10); // enforce max 10
   }

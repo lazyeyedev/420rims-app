@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 import AdminLayout from './AdminLayout';
 import axiosInstance from '../../api/axiosInstance';
 
-const PLACEHOLDER = 'https://via.placeholder.com/72x52/141414/444?text=No+Image';
+import { getPlaceholder } from '../../utils/placeholder';
+const PLACEHOLDER = getPlaceholder(72, 52);
 const FILTERS = [
   { label:'All',     value:''      },
   { label:'Pending', value:'false' },
