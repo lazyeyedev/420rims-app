@@ -17,8 +17,6 @@ import DealerListings      from './pages/dealer/DealerListings';
 import DealerCreateListing from './pages/dealer/DealerCreateListing';
 import DealerEditListing   from './pages/dealer/DealerEditListing';
 import DealerProfile       from './pages/dealer/DealerProfile';
-import DealerBoost         from './pages/dealer/DealerBoost';
-import DealerBoostSuccess  from './pages/dealer/DealerBoostSuccess';
 
 import UserProfile         from './pages/user/UserProfile';
 import UserEnquiries       from './pages/user/UserEnquiries';
@@ -27,6 +25,7 @@ import AdminLogin          from './pages/admin/AdminLogin';
 import AdminDashboard      from './pages/admin/AdminDashboard';
 import AdminUsers          from './pages/admin/AdminUsers';
 import AdminDealers        from './pages/admin/AdminDealers';
+import AdminDealerDetail   from './pages/admin/AdminDealerDetail';
 import AdminListings       from './pages/admin/AdminListings';
 import AdminBoosts         from './pages/admin/AdminBoosts';
 
@@ -74,8 +73,6 @@ function App() {
             <Route path="/dealer/listings/create"   element={<DealerCreateListing />} />
             <Route path="/dealer/listings/edit/:id" element={<DealerEditListing />} />
             <Route path="/dealer/profile"           element={<DealerProfile />} />
-            <Route path="/dealer/boost"         element={<DealerBoost />} />
-            <Route path="/dealer/boost/success" element={<DealerBoostSuccess />} />
           </Route>
 
           {/* Protected — admin only, redirects to /admin/login */}
@@ -83,6 +80,7 @@ function App() {
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
             <Route path="/admin/users"     element={<AdminUsers />} />
             <Route path="/admin/dealers"   element={<AdminDealers />} />
+            <Route path="/admin/dealers/:dealerId" element={<AdminDealerDetail />} />
             <Route path="/admin/listings"  element={<AdminListings />} />
             <Route path="/admin/boosts"    element={<AdminBoosts />} />
           </Route>

@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import AdminLayout from './AdminLayout';
 import axiosInstance from '../../api/axiosInstance';
 
@@ -114,10 +115,11 @@ export default function AdminDealers() {
                                 {d.businessName?.[0]}
                               </div>}
                           <div>
-                            <div style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600 }}>
+                            <Link to={`/admin/dealers/${d._id}`} style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600, textDecoration:'none' }}
+                              onMouseEnter={e=>e.target.style.color='#c41e2a'} onMouseLeave={e=>e.target.style.color='#ececec'}>
                               {d.businessName}
                               {d.isVerified && <span style={{ color:'#c41e2a', marginLeft:5, fontSize:'0.72rem' }}>✓</span>}
-                            </div>
+                            </Link>
                             <div style={{ color:'#555', fontSize:'0.72rem' }}>{d.businessAddress}</div>
                           </div>
                         </div>

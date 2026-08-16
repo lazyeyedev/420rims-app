@@ -103,6 +103,49 @@ const getAllDealers = async (req, res) => {
   res.status(200).json({ dealers, total, page: pageNum, totalPages: Math.ceil(total / limitNum) });
 };
 
+// GET /api/admin/dealers/:dealerId  (full profile)
+const getDealerById = async (req, res) => {
+  const dealer = await Dealer.findById(req.params.dealerId).populate(
+    'user',
+    'name email phone avatar isActive createdAt'
+  );
+
+  if (!dealer) {
+    res.status(404);
+    throw new Error('Dealer not found');
+  }
+
+  const [listings, listingStats, enquiryCount] = await Promise.all([
+    Listing.find({ dealer: dealer._id }).sort({ createdAt: -1 }).limit(50),
+    Listing.aggregate([
+      { $match: { dealer: dealer._id } },
+      {
+        $group: {
+          _id: null,
+          totalListings: { $sum: 1 },
+          activeListings: { $sum: { $cond: ['$isActive', 1, 0] } },
+          approvedListings: { $sum: { $cond: ['$isApproved', 1, 0] } },
+          totalViews: { $sum: '$views' },
+        },
+      },
+    ]),
+    Enquiry.countDocuments({ dealer: dealer._id }),
+  ]);
+
+  const stats = listingStats[0] || {
+    totalListings: 0,
+    activeListings: 0,
+    approvedListings: 0,
+    totalViews: 0,
+  };
+
+  res.status(200).json({
+    dealer,
+    listings,
+    stats: { ...stats, totalEnquiries: enquiryCount },
+  });
+};
+
 // PUT /api/admin/dealers/:dealerId/approve
 const approveDealer = async (req, res) => {
   const dealer = await Dealer.findByIdAndUpdate(
@@ -308,6 +351,7 @@ module.exports = {
   getAllUsers,
   updateUserStatus,
   getAllDealers,
+  getDealerById,
   approveDealer,
   rejectDealer,
   suspendDealer,

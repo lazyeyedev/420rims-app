@@ -6,6 +6,7 @@ const {
   getAllUsers,
   updateUserStatus,
   getAllDealers,
+  getDealerById,
   approveDealer,
   rejectDealer,
   suspendDealer,
@@ -32,6 +33,7 @@ router.put('/users/:userId/status', updateUserStatus);
 
 // Dealers
 router.get('/dealers', getAllDealers);
+router.get('/dealers/:dealerId', getDealerById);
 router.put('/dealers/:dealerId/approve',  approveDealer);
 router.put('/dealers/:dealerId/reject',   rejectDealer);
 router.put('/dealers/:dealerId/suspend',  suspendDealer);
