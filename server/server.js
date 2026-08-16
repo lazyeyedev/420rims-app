@@ -41,7 +41,11 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
-    callback(new Error(`Origin ${origin} not allowed by CORS`));
+    // IMPORTANT: pass `false`, not an Error — throwing here routes into the
+    // Express error handler and can produce a malformed/header-less response
+    // on preflight OPTIONS requests, which browsers report as an ambiguous
+    // "CORS request did not succeed" failure instead of a clean rejection.
+    callback(null, false);
   },
   credentials: true,
 }));
