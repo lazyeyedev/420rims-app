@@ -6,7 +6,7 @@
 // real URL rather than the raw comma-separated string.
 function getPublicClientUrl() {
   const raw = process.env.CLIENT_URL || 'http://localhost:3000';
-  const urls = raw.split(',').map((u) => u.trim()).filter(Boolean);
+  const urls = raw.split(',').map((u) => u.trim().replace(/\/+$/, '')).filter(Boolean);
 
   // Prefer the first https:// entry (production/public), fall back to the first entry.
   const preferred = urls.find((u) => u.startsWith('https://'));

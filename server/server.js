@@ -30,15 +30,18 @@ const app = express();
 // The `cors` package treats a plain string as one literal value, so a comma-separated
 // string gets echoed back verbatim and rejected by browsers as an invalid header.
 // Parse it into a list and validate the incoming request's origin against it instead.
+// Trailing slashes are stripped since browsers never send one in the Origin header —
+// a stray trailing slash in the env var would otherwise silently break the match.
 const allowedOrigins = (process.env.CLIENT_URL || '')
   .split(',')
-  .map((o) => o.trim())
+  .map((o) => o.trim().replace(/\/+$/, ''))
   .filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
+    const normalizedOrigin = origin ? origin.replace(/\/+$/, '') : origin;
     // Allow requests with no origin (e.g. curl, Postman, server-to-server)
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!normalizedOrigin || allowedOrigins.includes(normalizedOrigin)) {
       return callback(null, true);
     }
     // IMPORTANT: pass `false`, not an Error — throwing here routes into the
