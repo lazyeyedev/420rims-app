@@ -1,5 +1,3 @@
-
-
 require('dotenv').config();
 require('express-async-errors');
 
@@ -26,17 +24,39 @@ connectDB();
 
 const app = express();
 
+// ✅ FIXED CORS - supports multiple origins
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  process.env.CLIENT_URL,
+].filter(Boolean); // removes undefined/null if env var not set
+
 app.use(cors({
-  origin:      process.env.CLIENT_URL,
+  origin: function (origin, callback) {
+    // Allow requests with no origin (Postman, mobile apps, curl)
+    if (!origin) return callback(null, true);
+
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith('.vercel.app')   // ✅ covers all Vercel preview URLs
+    ) {
+      return callback(null, true);
+    }
+
+    console.error(`CORS blocked: ${origin}`);
+    return callback(new Error(`CORS blocked for origin: ${origin}`));
+  },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+// ✅ Handle preflight requests for all routes
+app.options('*', cors());
 
 app.use(helmet());
 app.use(morgan('dev'));
 
-// NOTE: express.json() is applied globally here.
-// The Paystack webhook route applies express.raw() at the route level
-// BEFORE express.json() touches it, so signature verification works correctly.
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
