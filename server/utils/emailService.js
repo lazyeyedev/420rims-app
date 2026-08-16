@@ -1,8 +1,9 @@
 const { Resend } = require('resend');
+const { getPublicClientUrl } = require('./clientUrl');
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM   = process.env.EMAIL_FROM || 'onboarding@resend.dev';
-const SITE   = process.env.CLIENT_URL || 'http://localhost:3000';
+const SITE   = getPublicClientUrl();
 
 const TYPE_LABEL = {
   general:    'General Enquiry',

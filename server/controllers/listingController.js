@@ -3,6 +3,7 @@ const Dealer = require('../models/Dealer');
 const Enquiry = require('../models/Enquiry');
 const { cloudinary } = require('../utils/cloudinaryUpload');
 const { sendEnquiryNotification } = require('../utils/emailService');
+const { getPublicClientUrl } = require('../utils/clientUrl');
 
 // GET /api/listings  (public)
 const getListings = async (req, res) => {
@@ -288,7 +289,7 @@ const submitEnquiry = async (req, res) => {
           senderPhone,
           message,
           type: type || 'general',
-          listingUrl: `${process.env.CLIENT_URL}/listings/${listing._id}`,
+          listingUrl: `${getPublicClientUrl()}/listings/${listing._id}`,
         });
       }
     } catch (_) {}

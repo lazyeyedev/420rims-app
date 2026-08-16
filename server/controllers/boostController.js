@@ -3,6 +3,7 @@ const Boost   = require('../models/Boost');
 const Listing = require('../models/Listing');
 const Dealer  = require('../models/Dealer');
 const { initializePayment, verifyPayment } = require('../utils/paystackService');
+const { getPublicClientUrl } = require('../utils/clientUrl');
 
 const PRICING = {
   featured: { 7: 50,  14: 90,  30: 150 },
@@ -54,7 +55,7 @@ const initializeBoost = async (req, res) => {
       durationDays: days,
       dealerId:    dealer._id.toString(),
     },
-    callbackUrl: `${process.env.CLIENT_URL}/dealer/boost/success`,
+    callbackUrl: `${getPublicClientUrl()}/dealer/boost/success`,
   });
 
   res.status(200).json({
@@ -127,18 +128,40 @@ const verifyBoostPayment = async (req, res) => {
   const { reference } = req.params;
 
   // Verify with Paystack
-  await verifyPayment(reference);
+  const transaction = await verifyPayment(reference);
 
-  // Return the boost record
-  const boost = await Boost.findOne({ paystackReference: reference })
+  // If the webhook already processed this reference, just return it.
+  let boost = await Boost.findOne({ paystackReference: reference })
     .populate('listing', 'title make model year');
 
+  // Fallback: webhook hasn't fired (e.g. unreachable on localhost, or delayed).
+  // Since Paystack already confirmed the payment above, activate the boost here too.
   if (!boost) {
-    // Payment verified but webhook hasn't fired yet — return pending state
-    return res.status(202).json({
-      status:  'pending',
-      message: 'Payment confirmed. Boost activation in progress.',
+    const { listingId, boostType, durationDays, dealerId } = transaction.metadata;
+
+    const startDate = new Date();
+    const endDate   = new Date();
+    endDate.setDate(endDate.getDate() + parseInt(durationDays));
+
+    boost = await Boost.create({
+      listing:           listingId,
+      dealer:            dealerId,
+      boostType,
+      durationDays:      parseInt(durationDays),
+      amountPaid:        transaction.amount / 100, // kobo back to GHS
+      currency:          'GHS',
+      startDate,
+      endDate,
+      paystackReference: reference,
+      status:            'active',
     });
+
+    await Listing.findByIdAndUpdate(listingId, {
+      isBoosted:   true,
+      boostExpiry: endDate,
+    });
+
+    boost = await Boost.findById(boost._id).populate('listing', 'title make model year');
   }
 
   res.status(200).json({ status: 'active', boost });
