@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,20 +22,29 @@ import DealerProfile       from './pages/dealer/DealerProfile';
 import UserProfile         from './pages/user/UserProfile';
 import UserEnquiries       from './pages/user/UserEnquiries';
 
-import AdminLogin          from './pages/admin/AdminLogin';
-import AdminDashboard      from './pages/admin/AdminDashboard';
-import AdminUsers          from './pages/admin/AdminUsers';
-import AdminDealers        from './pages/admin/AdminDealers';
-import AdminDealerDetail   from './pages/admin/AdminDealerDetail';
-import AdminListings       from './pages/admin/AdminListings';
-import AdminListingDetail  from './pages/admin/AdminListingDetail';
-import AdminBoosts         from './pages/admin/AdminBoosts';
+// Admin panel is code-split into its own chunk — none of this ships to
+// public/dealer/user visitors until someone actually navigates to /admin/*.
+const AdminLogin         = lazy(() => import('./pages/admin/AdminLogin'));
+const AdminDashboard     = lazy(() => import('./pages/admin/AdminDashboard'));
+const AdminUsers         = lazy(() => import('./pages/admin/AdminUsers'));
+const AdminDealers       = lazy(() => import('./pages/admin/AdminDealers'));
+const AdminDealerDetail  = lazy(() => import('./pages/admin/AdminDealerDetail'));
+const AdminListings      = lazy(() => import('./pages/admin/AdminListings'));
+const AdminListingDetail = lazy(() => import('./pages/admin/AdminListingDetail'));
+const AdminBoosts        = lazy(() => import('./pages/admin/AdminBoosts'));
 
 const NotFound = () => (
   <div style={{ color: '#c41e2a', textAlign: 'center', padding: '4rem',
     background: '#0a0a0a', minHeight: '100vh' }}>
     <h1 style={{ fontSize: '4rem' }}>404</h1>
     <p>Page not found.</p>
+  </div>
+);
+
+const AdminChunkFallback = () => (
+  <div style={{ background: '#0a0a0a', minHeight: '100vh', display: 'flex',
+    alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ color: '#c41e2a', fontSize: '0.85rem', letterSpacing: 1 }}>Loading admin panel…</div>
   </div>
 );
 
@@ -49,7 +59,8 @@ function App() {
           theme="dark"
           toastStyle={{ backgroundColor: '#1a1a1a', color: '#fff', border: '1px solid #2a2a2a' }}
         />
-        <Routes>
+        <Suspense fallback={<AdminChunkFallback />}>
+          <Routes>
           {/* Public */}
           <Route path="/"                element={<Home />} />
           <Route path="/listings"        element={<Search />} />
@@ -88,7 +99,8 @@ function App() {
           </Route>
 
           <Route path="*" element={<NotFound />} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </AuthProvider>
     </BrowserRouter>
   );
