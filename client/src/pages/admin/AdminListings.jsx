@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import AdminLayout from './AdminLayout';
 import axiosInstance from '../../api/axiosInstance';
@@ -38,6 +39,7 @@ function ConfirmModal({ title, message, onConfirm, onCancel }) {
 }
 
 export default function AdminListings() {
+  const navigate = useNavigate();
   const [listings,  setListings]  = useState([]);
   const [filter,    setFilter]    = useState('');
   const [search,    setSearch]    = useState('');
@@ -148,7 +150,8 @@ export default function AdminListings() {
                 </thead>
                 <tbody>
                   {listings.map(l => (
-                    <tr key={l._id} style={{ borderBottom:'1px solid #1a1a1a' }}
+                    <tr key={l._id} style={{ borderBottom:'1px solid #1a1a1a', cursor:'pointer' }}
+                      onClick={() => navigate(`/admin/listings/${l._id}`)}
                       onMouseEnter={e=>e.currentTarget.style.background='#181818'}
                       onMouseLeave={e=>e.currentTarget.style.background='transparent'}>
                       <td style={{ padding:'0.8rem 1rem' }}>
@@ -189,7 +192,7 @@ export default function AdminListings() {
                       <td style={{ padding:'0.8rem 1rem', color:'#555', fontSize:'0.75rem', whiteSpace:'nowrap' }}>
                         {new Date(l.createdAt).toLocaleDateString()}
                       </td>
-                      <td style={{ padding:'0.8rem 1rem' }}>
+                      <td style={{ padding:'0.8rem 1rem' }} onClick={e => e.stopPropagation()}>
                         <div style={{ display:'flex', gap:'0.4rem' }}>
                           {!l.isApproved && (
                             <button onClick={() => act(l._id,'approve','Listing approved',{isApproved:true,isActive:true})}

@@ -246,6 +246,61 @@ const getAllListings = async (req, res) => {
   res.status(200).json({ listings, total, page: pageNum, totalPages: Math.ceil(total / limitNum) });
 };
 
+// GET /api/admin/listings/:listingId  (full detail)
+const getListingById = async (req, res) => {
+  const listing = await Listing.findById(req.params.listingId).populate(
+    'dealer',
+    'businessName region phone whatsapp isVerified isApproved'
+  );
+
+  if (!listing) {
+    res.status(404);
+    throw new Error('Listing not found');
+  }
+
+  res.status(200).json(listing);
+};
+
+// PUT /api/admin/listings/:listingId  (full edit — admin, no ownership check)
+const updateListingAdmin = async (req, res) => {
+  const listing = await Listing.findById(req.params.listingId);
+  if (!listing) {
+    res.status(404);
+    throw new Error('Listing not found');
+  }
+
+  const forbidden = ['dealer', 'isApproved', 'views', 'enquiryCount', 'isBoosted', 'boostExpiry', 'keptImages'];
+  const updates = { ...req.body };
+  forbidden.forEach((f) => delete updates[f]);
+
+  // Resolve final image set: kept existing images + newly uploaded ones
+  let keptImages = req.body.keptImages;
+  if (keptImages === undefined) keptImages = listing.images || [];
+  else if (!Array.isArray(keptImages)) keptImages = [keptImages];
+
+  const removedImages = (listing.images || []).filter((url) => !keptImages.includes(url));
+  if (removedImages.length > 0) {
+    const deletePromises = removedImages.map((url) => {
+      const parts = url.split('/');
+      const filenameWithExt = parts[parts.length - 1];
+      const filename = filenameWithExt.split('.')[0];
+      const folder = parts[parts.length - 2];
+      return cloudinary.uploader.destroy(`${folder}/${filename}`);
+    });
+    await Promise.allSettled(deletePromises);
+  }
+
+  const newUrls = (req.files || []).map((f) => f.path || f.secure_url || f.url);
+  updates.images = [...keptImages, ...newUrls].slice(0, 10);
+
+  const updated = await Listing.findByIdAndUpdate(req.params.listingId, updates, {
+    new: true,
+    runValidators: true,
+  }).populate('dealer', 'businessName region phone whatsapp isVerified isApproved');
+
+  res.status(200).json(updated);
+};
+
 // PUT /api/admin/listings/:listingId/approve
 const approveListing = async (req, res) => {
   const listing = await Listing.findByIdAndUpdate(
@@ -357,6 +412,8 @@ module.exports = {
   suspendDealer,
   verifyDealer,
   getAllListings,
+  getListingById,
+  updateListingAdmin,
   approveListing,
   rejectListing,
   deleteListingAdmin,

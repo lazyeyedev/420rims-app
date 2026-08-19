@@ -12,6 +12,8 @@ const {
   suspendDealer,
   verifyDealer,
   getAllListings,
+  getListingById,
+  updateListingAdmin,
   approveListing,
   rejectListing,
   deleteListingAdmin,
@@ -21,6 +23,7 @@ const {
 
 const { protect } = require('../middleware/authMiddleware');
 const { authorize } = require('../middleware/roleMiddleware');
+const { upload } = require('../utils/cloudinaryUpload');
 
 router.use(protect, authorize('admin'));
 
@@ -41,6 +44,8 @@ router.put('/dealers/:dealerId/verify',   verifyDealer);
 
 // Listings
 router.get('/listings', getAllListings);
+router.get('/listings/:listingId', getListingById);
+router.put('/listings/:listingId', upload.array('images', 10), updateListingAdmin);
 router.put('/listings/:listingId/approve', approveListing);
 router.put('/listings/:listingId/reject',  rejectListing);
 router.delete('/listings/:listingId',      deleteListingAdmin);

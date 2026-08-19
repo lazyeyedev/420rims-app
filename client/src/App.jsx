@@ -27,6 +27,7 @@ import AdminUsers          from './pages/admin/AdminUsers';
 import AdminDealers        from './pages/admin/AdminDealers';
 import AdminDealerDetail   from './pages/admin/AdminDealerDetail';
 import AdminListings       from './pages/admin/AdminListings';
+import AdminListingDetail  from './pages/admin/AdminListingDetail';
 import AdminBoosts         from './pages/admin/AdminBoosts';
 
 const NotFound = () => (
@@ -82,6 +83,7 @@ function App() {
             <Route path="/admin/dealers"   element={<AdminDealers />} />
             <Route path="/admin/dealers/:dealerId" element={<AdminDealerDetail />} />
             <Route path="/admin/listings"  element={<AdminListings />} />
+            <Route path="/admin/listings/:listingId" element={<AdminListingDetail />} />
             <Route path="/admin/boosts"    element={<AdminBoosts />} />
           </Route>
 

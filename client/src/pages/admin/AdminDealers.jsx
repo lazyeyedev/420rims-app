@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AdminLayout from './AdminLayout';
 import axiosInstance from '../../api/axiosInstance';
 
@@ -27,6 +27,7 @@ const ActionBtn = ({ label, onClick, color='#ccc', bg='#1e1e1e', disabled }) => 
 );
 
 export default function AdminDealers() {
+  const navigate = useNavigate();
   const [dealers,  setDealers]  = useState([]);
   const [filter,   setFilter]   = useState('');
   const [loading,  setLoading]  = useState(true);
@@ -100,7 +101,8 @@ export default function AdminDealers() {
                 </thead>
                 <tbody>
                   {dealers.map(d => (
-                    <tr key={d._id} style={{ borderBottom:'1px solid #1a1a1a' }}
+                    <tr key={d._id} style={{ borderBottom:'1px solid #1a1a1a', cursor:'pointer' }}
+                      onClick={() => navigate(`/admin/dealers/${d._id}`)}
                       onMouseEnter={e=>e.currentTarget.style.background='#181818'}
                       onMouseLeave={e=>e.currentTarget.style.background='transparent'}>
                       <td style={{ padding:'0.8rem 1rem' }}>
@@ -115,11 +117,10 @@ export default function AdminDealers() {
                                 {d.businessName?.[0]}
                               </div>}
                           <div>
-                            <Link to={`/admin/dealers/${d._id}`} style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600, textDecoration:'none' }}
-                              onMouseEnter={e=>e.target.style.color='#c41e2a'} onMouseLeave={e=>e.target.style.color='#ececec'}>
+                            <span style={{ color:'#ececec', fontSize:'0.85rem', fontWeight:600 }}>
                               {d.businessName}
                               {d.isVerified && <span style={{ color:'#c41e2a', marginLeft:5, fontSize:'0.72rem' }}>✓</span>}
-                            </Link>
+                            </span>
                             <div style={{ color:'#555', fontSize:'0.72rem' }}>{d.businessAddress}</div>
                           </div>
                         </div>
@@ -140,7 +141,7 @@ export default function AdminDealers() {
                           ? <Badge label="Approved"  bg="#52c07a22" color="#52c07a" />
                           : <Badge label="Pending"   bg="#c41e2a22" color="#c41e2a" />}
                       </td>
-                      <td style={{ padding:'0.8rem 1rem' }}>
+                      <td style={{ padding:'0.8rem 1rem' }} onClick={e => e.stopPropagation()}>
                         <div style={{ display:'flex', gap:'0.4rem', flexWrap:'wrap' }}>
                           {!d.isApproved && (
                             <ActionBtn label={acting[d._id]==='approve'?'…':'Approve'}
