@@ -10,7 +10,7 @@ const CloudinaryStorage = multerStorageCloudinary.CloudinaryStorage || multerSto
 const dealerStorage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: '420rims/dealers',
+    folder: 'carstand/dealers',
     allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
     transformation: [{ quality: 'auto', fetch_format: 'auto' }],
   },

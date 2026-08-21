@@ -7,7 +7,7 @@ export default function Footer() {
         <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'2rem', marginBottom:'2.5rem' }}>
 
           <div>
-            <div style={{ fontSize:'1.4rem', fontWeight:800, color:'#c41e2a', marginBottom:'0.75rem' }}>420RIMS</div>
+            <div style={{ fontSize:'1.4rem', fontWeight:800, color:'#c41e2a', marginBottom:'0.75rem' }}>CarStand</div>
             <p style={{ color:'#666', fontSize:'0.85rem', lineHeight:1.7 }}>
               Ghana's premier marketplace for buying and selling quality vehicles. Trusted by dealers across all sixteen regions.
             </p>
@@ -33,7 +33,7 @@ export default function Footer() {
               textTransform:'uppercase', marginBottom:'1rem' }}>Contact</div>
             <div style={{ color:'#888', fontSize:'0.85rem', lineHeight:1.9 }}>
               <div>📍 Accra, Ghana</div>
-              <div>📧 hello@420rims.com</div>
+              <div>📧 hello@carstand.net</div>
               <div>📞 +233 XX XXX XXXX</div>
             </div>
           </div>
@@ -43,7 +43,7 @@ export default function Footer() {
           display:'flex', flexWrap:'wrap', justifyContent:'space-between',
           alignItems:'center', gap:'0.5rem' }}>
           <span style={{ color:'#555', fontSize:'0.8rem' }}>
-            © 2026 420Rims. All rights reserved.
+            © 2026 CarStand. All rights reserved.
           </span>
           <span style={{ color:'#444', fontSize:'0.8rem' }}>
             A <span style={{ color:'#c41e2a' }}>TechSphere</span> / <span style={{ color:'#c41e2a' }}>Sevinity Holdings</span> product · Accra, Ghana

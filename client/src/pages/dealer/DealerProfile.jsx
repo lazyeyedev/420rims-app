@@ -207,7 +207,7 @@ export default function DealerProfile() {
                   Subscription: {tier.charAt(0).toUpperCase()+tier.slice(1)} Plan
                 </div>
                 <div style={{ color:'#666', fontSize:'0.8rem', marginTop:3 }}>
-                  To upgrade your plan, contact support at hello@420rims.com
+                  To upgrade your plan, contact support at hello@carstand.net
                 </div>
               </div>
               {dealer?.subscriptionExpiry && (

@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser]       = useState(null);
-  const [token, setToken]     = useState(() => localStorage.getItem('420rims_token'));
+  const [token, setToken]     = useState(() => localStorage.getItem('carstand_token'));
   const [loading, setLoading] = useState(true);
 
   // Restore session on mount
@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         const { data } = await axiosInstance.get('/auth/me');
         setUser(data.user);
       } catch {
-        localStorage.removeItem('420rims_token');
+        localStorage.removeItem('carstand_token');
         setToken(null);
       } finally {
         setLoading(false);
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   const storeToken = (t) => {
-    localStorage.setItem('420rims_token', t);
+    localStorage.setItem('carstand_token', t);
     setToken(t);
   };
 
@@ -55,8 +55,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('420rims_token');
-    localStorage.removeItem('420rims_user');
+    localStorage.removeItem('carstand_token');
+    localStorage.removeItem('carstand_user');
     setToken(null);
     setUser(null);
   };

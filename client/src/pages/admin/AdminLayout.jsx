@@ -22,7 +22,7 @@ export default function AdminLayout({ children }) {
 
         <div style={{ padding:'1.4rem 1.25rem', borderBottom:'1px solid #1e1e1e' }}>
           <div style={{ color:'#c41e2a', fontWeight:900, fontSize:'1.15rem', letterSpacing:1 }}>
-            420RIMS
+            CarStand
           </div>
           <div style={{ color:'#555', fontSize:'0.72rem', fontWeight:600, letterSpacing:1,
             textTransform:'uppercase', marginTop:2 }}>Admin Panel</div>
@@ -62,7 +62,7 @@ export default function AdminLayout({ children }) {
           padding:'0 1.75rem', height:56, display:'flex', alignItems:'center',
           justifyContent:'space-between', position:'sticky', top:0, zIndex:50 }}>
           <span style={{ color:'#c41e2a', fontWeight:700, fontSize:'0.88rem',
-            letterSpacing:0.5 }}>420Rims Admin Panel</span>
+            letterSpacing:0.5 }}>CarStand Admin Panel</span>
           <span style={{ color:'#333', fontSize:'0.78rem' }}>
             {new Date().toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short', year:'numeric' })}
           </span>

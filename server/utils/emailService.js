@@ -31,7 +31,7 @@ const sendEnquiryNotification = async ({
         <!-- Header -->
         <tr>
           <td style="background:#0d0d0d;padding:24px 32px;">
-            <span style="color:#c9a84c;font-size:22px;font-weight:900;letter-spacing:2px;">420RIMS</span>
+            <span style="color:#c9a84c;font-size:22px;font-weight:900;letter-spacing:2px;">CarStand</span>
           </td>
         </tr>
 
@@ -108,8 +108,8 @@ const sendEnquiryNotification = async ({
         <tr>
           <td style="background:#f9f9f9;padding:16px 32px;border-top:1px solid #e5e5e5;">
             <p style="margin:0;color:#aaa;font-size:12px;">
-              420Rims · Ghana's Premier Car Marketplace · 
-              <a href="${SITE}" style="color:#c9a84c;text-decoration:none;">420rims.com</a>
+              CarStand · Ghana's Premier Car Marketplace · 
+              <a href="${SITE}" style="color:#c9a84c;text-decoration:none;">carstand.net</a>
             </p>
           </td>
         </tr>
@@ -141,7 +141,7 @@ const sendWelcomeEmail = async ({ email, name }) => {
         <!-- Header -->
         <tr>
           <td style="background:#0d0d0d;padding:24px 32px;">
-            <span style="color:#c9a84c;font-size:22px;font-weight:900;letter-spacing:2px;">420RIMS</span>
+            <span style="color:#c9a84c;font-size:22px;font-weight:900;letter-spacing:2px;">CarStand</span>
           </td>
         </tr>
 
@@ -182,7 +182,7 @@ const sendWelcomeEmail = async ({ email, name }) => {
         <tr>
           <td style="background:#f9f9f9;padding:16px 32px;border-top:1px solid #e5e5e5;">
             <p style="margin:0;color:#aaa;font-size:12px;">
-              420Rims · A TechSphere / Sevinity Holdings product · Accra, Ghana
+              CarStand · A TechSphere / Sevinity Holdings product · Accra, Ghana
             </p>
           </td>
         </tr>
@@ -196,7 +196,7 @@ const sendWelcomeEmail = async ({ email, name }) => {
   await resend.emails.send({
     from:    FROM,
     to:      email,
-    subject: 'Welcome to 420Rims',
+    subject: 'Welcome to CarStand',
     html,
   });
 };

@@ -1,4 +1,4 @@
-# 420Rims — Ghana's Premier Car Marketplace
+# CarStand — Ghana's Premier Car Marketplace
 
 A full-stack web application for buying and selling vehicles across Ghana. Built by TechSphere, a division of Sevinity Holdings, Accra.
 
@@ -105,8 +105,8 @@ npm run seed
 ```
 
 This creates:
-- **Email:** admin@420rims.com
-- **Password:** Admin@420Rims2026
+- **Email:** admin@carstand.net
+- **Password:** Admin@CarStand2026
 
 Change the password immediately after first login. Safe to run multiple times — skips if admin already exists.
 
@@ -162,4 +162,4 @@ DELETE /api/admin/listings/:id          Hard delete listing
 
 ---
 
-*420Rims · A TechSphere / Sevinity Holdings product · Accra, Ghana · 2026*
+*CarStand · A TechSphere / Sevinity Holdings product · Accra, Ghana · 2026*

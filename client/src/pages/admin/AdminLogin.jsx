@@ -97,7 +97,7 @@ export default function AdminLogin() {
       <style>{focusStyle}</style>
       <div style={s.card}>
         <div style={s.logo}>
-          <div style={s.logoText}>420RIMS</div>
+          <div style={s.logoText}>CarStand</div>
           <div style={s.logoSub}>Admin Panel</div>
           <div style={s.divider} />
         </div>
@@ -107,7 +107,7 @@ export default function AdminLogin() {
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div style={s.group}>
             <label style={s.label}>Email</label>
-            <input {...register('email')} type="email" placeholder="admin@420rims.com"
+            <input {...register('email')} type="email" placeholder="admin@carstand.net"
               style={s.input} autoComplete="username" />
             {errors.email && <div style={s.error}>{errors.email.message}</div>}
           </div>

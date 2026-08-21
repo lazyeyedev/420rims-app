@@ -13,7 +13,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinaryLib,
   params: {
-    folder: '420rims/listings',
+    folder: 'carstand/listings',
     allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
     transformation: [{ quality: 'auto', fetch_format: 'auto' }],
   },

@@ -14,7 +14,7 @@ cloudinary.config({
 const avatarStorage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: '420rims/avatars',
+    folder: 'carstand/avatars',
     allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
     transformation: [{ width: 300, height: 300, crop: 'fill', gravity: 'face', quality: 'auto' }],
   },

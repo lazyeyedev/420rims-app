@@ -5,7 +5,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('420rims_token');
+  const token = localStorage.getItem('carstand_token');
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -16,8 +16,8 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem('420rims_token');
-      localStorage.removeItem('420rims_user');
+      localStorage.removeItem('carstand_token');
+      localStorage.removeItem('carstand_user');
       window.location.href = '/login';
     }
     return Promise.reject(error);

@@ -29,7 +29,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" style={{ fontSize:'1.5rem', fontWeight:800, color:GOLD,
-          letterSpacing:1, textDecoration:'none' }}>420RIMS</Link>
+          letterSpacing:1, textDecoration:'none' }}>CarStand</Link>
 
         {/* Desktop nav */}
         <div style={{ display:'flex', alignItems:'center', gap:'1.5rem' }}

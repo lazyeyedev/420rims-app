@@ -114,7 +114,7 @@ export default function RegisterDealer() {
       <style>{focusStyle}{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
       <div style={s.card}>
         <div style={s.logo}>
-          <div style={s.logoText}>420RIMS</div>
+          <div style={s.logoText}>CarStand</div>
           <div style={s.logoSub}>Ghana's Premium Car Marketplace</div>
         </div>
         <div style={s.title}>Dealer Registration</div>

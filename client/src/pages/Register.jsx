@@ -78,7 +78,7 @@ export default function Register() {
   const onSubmit = async (data) => {
     try {
       await registerUser({ name: data.name, email: data.email, phone: data.phone, password: data.password });
-      toast.success('Welcome to 420Rims!');
+      toast.success('Welcome to CarStand!');
       navigate('/');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Registration failed');
@@ -90,7 +90,7 @@ export default function Register() {
       <style>{focusStyle}{spinStyle}</style>
       <div style={s.card}>
         <div style={s.logo}>
-          <div style={s.logoText}>420RIMS</div>
+          <div style={s.logoText}>CarStand</div>
           <div style={s.logoSub}>Ghana's Premium Car Marketplace</div>
         </div>
         <div style={s.title}>Create Account</div>

@@ -203,7 +203,7 @@ export default function ListingDetail() {
                       alignItems:'center', gap:6 }}>
                       {dealer.businessName}
                       {dealer.isVerified && (
-                        <span title="420Rims Verified" style={{ background:'#c41e2a22', color:'#c41e2a',
+                        <span title="CarStand Verified" style={{ background:'#c41e2a22', color:'#c41e2a',
                           fontSize:'0.7rem', padding:'1px 6px', borderRadius:4, fontWeight:700 }}>
                           ✓ VERIFIED
                         </span>
